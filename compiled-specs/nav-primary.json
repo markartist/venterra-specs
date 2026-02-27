@@ -1,0 +1,32 @@
+{
+  "page_template": "nav-primary",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "header_navigation",
+      "data-page-section-location": "01",
+      "subsections": [
+        {
+          "data-component-name": "cta_office_phone",
+          "data-action": "navigate_prospect_portal"
+        },
+        {
+          "data-component-name": "cta_home_link",
+          "data-action": "navigate_homepage"
+        },
+        {
+          "data-component-name": "cta_apply_now",
+          "data-action": "navigate_prospect_portal"
+        },
+        {
+          "data-component-name": "cta_schedule_tour",
+          "data-action": "navigate_prospect_portal"
+        },
+        {
+          "data-component-name": "open_expanded_navigation"
+        }
+      ]
+    }
+  ]
+}

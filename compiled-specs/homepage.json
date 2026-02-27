@@ -1,0 +1,212 @@
+{
+  "page_template": "homepage",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "promo_bar",
+      "data-page-section-location": "1",
+      "subsections": [
+        {
+          "data-component-name": "open_promo_bar"
+        },
+        {
+          "data-component-name": "see_specials",
+          "data-action": "navigate_specials"
+        },
+        {
+          "data-component-name": "cta_schedule_tour",
+          "data-action": "navigate_prospect_portal"
+        }
+      ]
+    },
+    {
+      "section_number": "02",
+      "section_name": "SECTION_02",
+      "data-page-section": "hero",
+      "data-page-section-location": "2",
+      "subsections": [
+        {
+          "data-component-name": "property_rating",
+          "data-action": "navigate_reviews"
+        },
+        {
+          "data-component-name": "find_your_home",
+          "data-action": "navigate_apartments"
+        }
+      ]
+    },
+    {
+      "section_number": "03",
+      "section_name": "SECTION_03",
+      "data-page-section": "welcome",
+      "data-page-section-location": "3",
+      "subsections": [
+        {
+          "data-component-name": "see_available_homes",
+          "data-action": "navigate_apartments"
+        }
+      ]
+    },
+    {
+      "section_number": "04",
+      "section_name": "SECTION_04",
+      "data-page-section": "apartment_features",
+      "data-page-section-location": "4",
+      "subsections": [
+        {
+          "data-component-name": "see_features",
+          "data-action": "navigate_features"
+        }
+      ]
+    },
+    {
+      "section_number": "05",
+      "section_name": "SECTION_05",
+      "data-page-section": "reviews_carousel",
+      "data-page-section-location": "5",
+      "subsections": [
+        {
+          "data-component-name": "carousel_prev_review"
+        },
+        {
+          "data-component-name": "carousel_next_review"
+        },
+        {
+          "data-component-name": "see_more_reviews",
+          "data-action": "navigate_reviews"
+        }
+      ]
+    },
+    {
+      "section_number": "06",
+      "section_name": "SECTION_06",
+      "data-page-section": "amenities",
+      "data-page-section-location": "6",
+      "subsections": [
+        {
+          "data-component-name": "see_amenities",
+          "data-action": "navigate_amenities"
+        }
+      ]
+    },
+    {
+      "section_number": "07",
+      "section_name": "SECTION_07",
+      "data-page-section": "lifestyle_benefits",
+      "data-page-section-location": "7",
+      "blocks": [
+        {
+          "subsections": [
+            {
+              "data-component-name": "tab_pet_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "tab_tech_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "tab_perks_info",
+              "data-action": "show_information"
+            }
+          ],
+          "block_id": "tab_navigation",
+          "data-sub-section": "tab_navigation"
+        },
+        {
+          "subsections": [
+            {
+              "data-component-name": "expand_pet_details",
+              "data-action": "show_information"
+            }
+          ],
+          "block_id": "pet_details",
+          "data-sub-section": "pet_details"
+        },
+        {
+          "subsections": [
+            {
+              "data-component-name": "expand_tech_details",
+              "data-action": "show_information"
+            }
+          ],
+          "block_id": "tech_details",
+          "data-sub-section": "tech_details"
+        },
+        {
+          "subsections": [
+            {
+              "data-component-name": "expand_leaders_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "contact_us",
+              "data-action": "navigate_contact"
+            },
+            {
+              "data-component-name": "expand_maintenance_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "expand_handyman_service_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "expand_move_in_info",
+              "data-action": "show_information"
+            }
+          ],
+          "block_id": "perk_details",
+          "data-sub-section": "perk_details"
+        }
+      ]
+    },
+    {
+      "section_number": "08",
+      "section_name": "SECTION_08",
+      "data-page-section": "neighborhood",
+      "data-page-section-location": "8",
+      "subsections": [
+        {
+          "data-component-name": "see_whats_around",
+          "data-action": "navigate_neighborhood"
+        },
+        {
+          "data-component-name": "carousel_prev_community_focus"
+        },
+        {
+          "data-component-name": "carousel_next_community_focus"
+        },
+        {
+          "data-component-name": "easy_commute",
+          "data-action": "navigate_neighborhood"
+        },
+        {
+          "data-component-name": "steps_away",
+          "data-action": "navigate_neighborhood"
+        },
+        {
+          "data-component-name": "retail_access",
+          "data-action": "navigate_neighborhood"
+        },
+        {
+          "data-component-name": "community_focused",
+          "data-action": "navigate_neighborhood"
+        }
+      ]
+    },
+    {
+      "section_number": "09",
+      "section_name": "SECTION_09",
+      "data-page-section": "brand_video",
+      "data-page-section-location": "9",
+      "subsections": [
+        {
+          "data-component-name": "see_why_venterra",
+          "data-action": "navigate_about"
+        }
+      ]
+    }
+  ]
+}

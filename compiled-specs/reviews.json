@@ -1,0 +1,23 @@
+{
+  "page_template": "reviews",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "hero",
+      "data-page-section-location": "1"
+    },
+    {
+      "section_number": "02",
+      "section_name": "SECTION_02",
+      "data-page-section": "reviews_content",
+      "data-page-section-location": "2",
+      "subsections": [
+        {
+          "data-component-name": "read_more_reviews",
+          "data-action": "navigate_external_google_reviews"
+        }
+      ]
+    }
+  ]
+}

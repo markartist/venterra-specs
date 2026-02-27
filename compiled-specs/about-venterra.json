@@ -1,0 +1,79 @@
+{
+  "page_template": "about-venterra",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "hero",
+      "data-page-section-location": "1"
+    },
+    {
+      "section_number": "02",
+      "section_name": "SECTION_02",
+      "data-page-section": "value_props",
+      "data-page-section-location": "2",
+      "subsections": [
+        {
+          "data-component-name": "30_day_move_in_guarantee",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "easy_transfers",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "referral_rewards",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "how_we_wow",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "see_for_yourself",
+          "data-action": "navigate_enterprise_site"
+        },
+        {
+          "data-component-name": "care_means_more",
+          "data-action": "show_information"
+        }
+      ]
+    },
+    {
+      "section_number": "03",
+      "section_name": "SECTION_03",
+      "data-page-section": "service_promises",
+      "data-page-section-location": "3",
+      "subsections": [
+        {
+          "data-component-name": "view_core_values",
+          "data-action": "navigate_corporate_site"
+        }
+      ]
+    },
+    {
+      "section_number": "04",
+      "section_name": "SECTION_04",
+      "data-page-section": "living_experience",
+      "data-page-section-location": "4",
+      "subsections": [
+        {
+          "data-component-name": "pet_friendly",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "maintenance_guarantee",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "handy_man_services",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "modern_convenience",
+          "data-action": "show_information"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "page_template": "specials",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "hero",
+      "data-page-section-location": "1"
+    },
+    {
+      "section_number": "02",
+      "section_name": "SECTION_02",
+      "data-page-section": "specials_content",
+      "data-page-section-location": "2",
+      "subsections": [
+        {
+          "data-component-name": "see_specials",
+          "data-action": "navigate_specials"
+        },
+        {
+          "data-component-name": "cta_schedule_tour",
+          "data-action": "navigate_prospect_portal"
+        }
+      ]
+    }
+  ]
+}

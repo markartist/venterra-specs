@@ -1,0 +1,117 @@
+{
+  "page_template": "amenities",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "hero",
+      "data-page-section-location": "1"
+    },
+    {
+      "section_number": "02",
+      "section_name": "SECTION_02",
+      "data-page-section": "explore_life_with_venterra",
+      "data-page-section-location": "2"
+    },
+    {
+      "section_number": "03",
+      "section_name": "SECTION_03",
+      "data-page-section": "outdoor_entertainment_deck",
+      "data-page-section-location": "3",
+      "subsections": [
+        {
+          "data-component-name": "view_details",
+          "data-action": "show_information"
+        }
+      ]
+    },
+    {
+      "section_number": "04",
+      "section_name": "SECTION_04",
+      "data-page-section": "lifestyle_benefits",
+      "data-page-section-location": "4",
+      "blocks": [
+        {
+          "subsections": [
+            {
+              "data-component-name": "tab_pet_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "tab_tech_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "tab_perks_info",
+              "data-action": "show_information"
+            }
+          ],
+          "block_id": "tab_navigation",
+          "data-sub-section": "tab_navigation"
+        },
+        {
+          "subsections": [
+            {
+              "data-component-name": "expand_pet_details",
+              "data-action": "show_information"
+            }
+          ],
+          "block_id": "pet_details",
+          "data-sub-section": "pet_details"
+        },
+        {
+          "subsections": [
+            {
+              "data-component-name": "expand_tech_details",
+              "data-action": "show_information"
+            }
+          ],
+          "block_id": "tech_details",
+          "data-sub-section": "tech_details"
+        },
+        {
+          "subsections": [
+            {
+              "data-component-name": "expand_leaders_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "contact_us",
+              "data-action": "navigate_contact"
+            },
+            {
+              "data-component-name": "expand_maintenance_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "expand_handyman_service_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "expand_move_in_info",
+              "data-action": "show_information"
+            }
+          ],
+          "block_id": "perk_details",
+          "data-sub-section": "perk_details"
+        }
+      ]
+    },
+    {
+      "section_number": "05",
+      "section_name": "SECTION_05",
+      "data-page-section": "community_amenities",
+      "data-page-section-location": "5",
+      "subsections": [
+        {
+          "data-component-name": "amenity_image",
+          "data-action": "show_image"
+        },
+        {
+          "data-component-name": "amenity_3d_video",
+          "data-action": "show_3d_video"
+        }
+      ]
+    }
+  ]
+}

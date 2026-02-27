@@ -1,0 +1,53 @@
+{
+  "page_template": "contact",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "hero",
+      "data-page-section-location": "1"
+    },
+    {
+      "section_number": "02",
+      "section_name": "SECTION_02",
+      "data-page-section": "property_info",
+      "data-page-section-location": "2",
+      "subsections": [
+        {
+          "data-component-name": "office_address",
+          "data-action": "navigate_external_maps"
+        },
+        {
+          "data-component-name": "cta_office_phone",
+          "data-action": "initiate_phone_call"
+        },
+        {
+          "data-component-name": "cta_schedule_tour",
+          "data-action": "navigate_prospect_portal"
+        },
+        {
+          "data-component-name": "cta_apply_now",
+          "data-action": "navigate_prospect_portal"
+        }
+      ]
+    },
+    {
+      "section_number": "03",
+      "section_name": "SECTION_03",
+      "data-page-section": "contact_form",
+      "data-page-section-location": "3",
+      "subsections": [
+        {
+          "data-component-name": "cta_contact_form_submit",
+          "data-action": "submit_contact_form"
+        }
+      ]
+    },
+    {
+      "section_number": "04",
+      "section_name": "SECTION_04",
+      "data-page-section": "staff_directory",
+      "data-page-section-location": "4"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "page_template": "gallery",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "hero",
+      "data-page-section-location": "1"
+    },
+    {
+      "section_number": "02",
+      "section_name": "SECTION_02",
+      "data-page-section": "gallery_grid",
+      "data-page-section-location": "2",
+      "subsections": [
+        {
+          "data-component-name": "all_photos_and_3d_videos",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "photos",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "3d_videos",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "apartment",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "community",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "gallery_media",
+          "data-action": "open_media"
+        },
+        {
+          "data-component-name": "next_media"
+        },
+        {
+          "data-component-name": "prev_media"
+        }
+      ]
+    }
+  ]
+}

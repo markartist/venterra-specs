@@ -1,0 +1,131 @@
+{
+  "page_template": "faqs",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "hero",
+      "data-page-section-location": "1"
+    },
+    {
+      "section_number": "02",
+      "section_name": "SECTION_02",
+      "data-page-section": "faq_content",
+      "data-page-section-location": "2",
+      "subsections": [
+        {
+          "data-component-name": "self_guided_tour",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "apply_cost",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "parking_options",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "online_packages",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "activity_director",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "trash_pickup",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "dog_park",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "parking_permit",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "guest_parking",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "pool_hours",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "pool_pass",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "pool_cabby",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "pool_fob",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "clubhouse_rentals",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "fitness_hours",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "amenity_reservations",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "pest_control",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "pool_parties",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "mailbox_numbers",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "compactor_location",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "move_hours",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "grills",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "cable_wifi",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "utilities",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "top_amenities",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "replacement_permit",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "temporary_permit",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "permit_cost",
+          "data-action": "show_information"
+        }
+      ]
+    }
+  ]
+}

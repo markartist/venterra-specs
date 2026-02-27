@@ -1,0 +1,97 @@
+{
+  "page_template": "footer-primary",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "footer",
+      "data-page-section-location": "01",
+      "subsections": [
+        {
+          "data-component-name": "filter_studios",
+          "data-action": "navigate_apartments"
+        },
+        {
+          "data-component-name": "filter_1bed",
+          "data-action": "navigate_apartments"
+        },
+        {
+          "data-component-name": "filter_2bed",
+          "data-action": "navigate_apartments"
+        },
+        {
+          "data-component-name": "filter_3bed",
+          "data-action": "navigate_apartments"
+        },
+        {
+          "data-component-name": "office_address",
+          "data-action": "navigate_external_maps"
+        },
+        {
+          "data-component-name": "cta_office_phone",
+          "data-action": "initiate_phone_call"
+        },
+        {
+          "data-component-name": "send_a_message",
+          "data-action": "navigate_contact"
+        },
+        {
+          "data-component-name": "smarthub_resident_portal",
+          "data-action": "navigate_resident_portal"
+        },
+        {
+          "data-component-name": "venterra_facebook",
+          "data-action": "navigate_external_facebook"
+        },
+        {
+          "data-component-name": "venterra_instagram",
+          "data-action": "navigate_external_instagram"
+        },
+        {
+          "data-component-name": "cta_apply_now",
+          "data-action": "navigate_prospect_portal"
+        },
+        {
+          "data-component-name": "apartments_and_pricing",
+          "data-action": "navigate_apartments"
+        },
+        {
+          "data-component-name": "features",
+          "data-action": "navigate_features"
+        },
+        {
+          "data-component-name": "amenities",
+          "data-action": "navigate_amenities"
+        },
+        {
+          "data-component-name": "gallery",
+          "data-action": "navigate_gallery"
+        },
+        {
+          "data-component-name": "location",
+          "data-action": "navigate_neighborhood"
+        },
+        {
+          "data-component-name": "expand_pet_policy",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "venterra_logo",
+          "data-action": "navigate_enterprise_site"
+        },
+        {
+          "data-component-name": "privacy_policy",
+          "data-action": "navigate_corporate_site"
+        },
+        {
+          "data-component-name": "terms_of_service",
+          "data-action": "navigate_corporate_site"
+        },
+        {
+          "data-component-name": "resi_logo",
+          "data-action": "navigate_external_resi"
+        }
+      ]
+    }
+  ]
+}

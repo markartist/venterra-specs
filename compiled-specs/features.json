@@ -1,0 +1,41 @@
+{
+  "page_template": "features",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "hero",
+      "data-page-section-location": "1"
+    },
+    {
+      "section_number": "02",
+      "section_name": "SECTION_02",
+      "data-page-section": "flexibility_comfort",
+      "data-page-section-location": "2"
+    },
+    {
+      "section_number": "03",
+      "section_name": "SECTION_03",
+      "data-page-section": "feature_gallery",
+      "data-page-section-location": "3"
+    },
+    {
+      "section_number": "04",
+      "section_name": "SECTION_04",
+      "data-page-section": "spacious_layouts",
+      "data-page-section-location": "4",
+      "subsections": [
+        {
+          "data-component-name": "see_available_homes",
+          "data-action": "navigate_apartments"
+        }
+      ]
+    },
+    {
+      "section_number": "05",
+      "section_name": "SECTION_05",
+      "data-page-section": "whats_included",
+      "data-page-section-location": "5"
+    }
+  ]
+}

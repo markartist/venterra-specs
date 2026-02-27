@@ -1,0 +1,64 @@
+{
+  "page_template": "apartments",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "hero",
+      "data-page-section-location": "1"
+    },
+    {
+      "section_number": "02",
+      "section_name": "SECTION_02",
+      "data-page-section": "apartment_listings",
+      "data-page-section-location": "2",
+      "subsections": [
+        {
+          "data-component-name": "studio",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "1bed",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "2bed",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "3bed",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "move_in_date",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "max_budget",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "apartments_list_view"
+        },
+        {
+          "data-component-name": "apartments_grid_view"
+        },
+        {
+          "data-component-name": "apartments_map_view"
+        },
+        {
+          "data-component-name": "unit_floorplan",
+          "data-action": "navigate_apartment_details"
+        },
+        {
+          "data-component-name": "unit_bed_bath",
+          "data-action": "navigate_apartment_details"
+        },
+        {
+          "data-component-name": "unit_details_and_price",
+          "data-action": "navigate_apartment_details"
+        }
+      ]
+    }
+  ]
+}

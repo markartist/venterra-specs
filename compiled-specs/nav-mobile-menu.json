@@ -1,0 +1,81 @@
+{
+  "page_template": "nav-mobile-menu",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "expanded_navigation",
+      "data-page-section-location": "01",
+      "subsections": [
+        {
+          "data-component-name": "venterra_logo",
+          "data-action": "navigate_homepage"
+        },
+        {
+          "data-component-name": "apartments_and_pricing",
+          "data-action": "navigate_apartments"
+        },
+        {
+          "data-component-name": "features",
+          "data-action": "navigate_features"
+        },
+        {
+          "data-component-name": "amenities",
+          "data-action": "navigate_amenities"
+        },
+        {
+          "data-component-name": "gallery",
+          "data-action": "navigate_gallery"
+        },
+        {
+          "data-component-name": "location",
+          "data-action": "navigate_neighborhood"
+        },
+        {
+          "data-component-name": "faq",
+          "data-action": "navigate_faq"
+        },
+        {
+          "data-component-name": "reviews",
+          "data-action": "navigate_reviews"
+        },
+        {
+          "data-component-name": "contact",
+          "data-action": "navigate_contact"
+        },
+        {
+          "data-component-name": "specials",
+          "data-action": "navigate_specials"
+        },
+        {
+          "data-component-name": "about_venterra",
+          "data-action": "navigate_about"
+        },
+        {
+          "data-component-name": "smarthub_resident_portal",
+          "data-action": "navigate_resident_portal"
+        },
+        {
+          "data-component-name": "cta_schedule_tour",
+          "data-action": "navigate_prospect_portal"
+        },
+        {
+          "data-component-name": "cta_apply_now",
+          "data-action": "navigate_prospect_portal"
+        },
+        {
+          "data-component-name": "cta_office_phone",
+          "data-action": "initiate_phone_call"
+        },
+        {
+          "data-component-name": "venterra_facebook",
+          "data-action": "navigate_external_facebook"
+        },
+        {
+          "data-component-name": "venterra_instagram",
+          "data-action": "navigate_external_instagram"
+        }
+      ]
+    }
+  ]
+}

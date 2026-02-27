@@ -5,6 +5,9 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
+    "dev": "vite",
+    "compile-spec": "tsx src/compiler/cli.ts",
+    "compile-all": "tsx src/compiler/cli.ts compile-all",
     "fix-sections": "node --input-type=module -e \"import fs from 'fs'; let c=fs.readFileSync('./src/layouts/pages/homepage.json','utf8'); c=c.replace(/\\\"section_01\\\"/g,'\\\"1\\\"').replace(/\\\"section_02\\\"/g,'\\\"2\\\"').replace(/\\\"section_03\\\"/g,'\\\"3\\\"').replace(/\\\"section_04\\\"/g,'\\\"4\\\"').replace(/\\\"section_05\\\"/g,'\\\"5\\\"').replace(/\\\"section_06\\\"/g,'\\\"6\\\"').replace(/\\\"section_07\\\"/g,'\\\"7\\\"').replace(/\\\"section_08\\\"/g,'\\\"8\\\"').replace(/\\\"section_09\\\"/g,'\\\"9\\\"').replace(/\\\"section_10\\\"/g,'\\\"10\\\"'); fs.writeFileSync('./src/layouts/pages/homepage.json',c,'utf8'); console.log('✅ Fixed');\""
   },
   "dependencies": {
@@ -64,8 +67,11 @@
   },
   "devDependencies": {
     "@tailwindcss/vite": "4.1.12",
+    "@types/node": "^22.10.5",
     "@vitejs/plugin-react": "4.7.0",
     "tailwindcss": "4.1.12",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
     "vite": "6.3.5"
   },
   "peerDependencies": {
