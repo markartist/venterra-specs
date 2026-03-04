@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 
 // ExportSpec v1.0 JSON structure (from compiler)
 interface Subsection {
@@ -60,6 +60,8 @@ function App() {
   const [zoom, setZoom] = useState(100)
   const [editMode, setEditMode] = useState(false)
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false)
+  const [draggingSection, setDraggingSection] = useState<{ idx: number; startY: number; startTop: number } | null>(null)
+  const canvasRef = React.useRef<HTMLDivElement>(null)
 
   // Load compiled JSON + position overrides when page changes
   useEffect(() => {
@@ -143,8 +145,43 @@ function App() {
     alert('TXT files are governance source files. Contact system admin for access.')
   }
 
-  const handleDragStart = (e: React.DragEvent, type: 'section' | 'subsection', sectionIdx: number, blockIdx: number | null, subIdx: number | null) => {
-    e.dataTransfer.setData('text/plain', JSON.stringify({ type, sectionIdx, blockIdx, subIdx }))
+  // --- Section drag: pointer-based for live feedback ---
+  const handleSectionPointerDown = useCallback((e: React.PointerEvent, idx: number) => {
+    if (!editMode || !specData || !canvasRef.current) return
+    e.preventDefault()
+    e.stopPropagation()
+    const section = specData.sections[idx] as any
+    const startTop = parseFloat(section.layout?.top || `${idx * 10}`)
+    setDraggingSection({ idx, startY: e.clientY, startTop })
+    ;(e.target as HTMLElement).setPointerCapture(e.pointerId)
+  }, [editMode, specData])
+
+  const handleSectionPointerMove = useCallback((e: React.PointerEvent) => {
+    if (!draggingSection || !specData || !canvasRef.current) return
+    e.preventDefault()
+    const canvasRect = canvasRef.current.getBoundingClientRect()
+    const scale = zoom / 100
+    const deltaY = (e.clientY - draggingSection.startY) / scale
+    const deltaPct = (deltaY / canvasRect.height) * 100 * scale
+    const newTop = Math.max(0, Math.min(100, draggingSection.startTop + deltaPct))
+
+    const newSpecData = JSON.parse(JSON.stringify(specData))
+    const section = newSpecData.sections[draggingSection.idx] as any
+    if (!section.layout) section.layout = {}
+    section.layout.top = `${newTop.toFixed(2)}%`
+    setSpecData(newSpecData)
+  }, [draggingSection, specData, zoom])
+
+  const handleSectionPointerUp = useCallback(() => {
+    if (draggingSection) {
+      setHasUnsavedChanges(true)
+      setDraggingSection(null)
+    }
+  }, [draggingSection])
+
+  // --- Subsection drag: still uses HTML5 drag-drop ---
+  const handleDragStart = (e: React.DragEvent, sectionIdx: number, blockIdx: number | null, subIdx: number | null) => {
+    e.dataTransfer.setData('text/plain', JSON.stringify({ sectionIdx, blockIdx, subIdx }))
   }
 
   const handleDrop = (e: React.DragEvent) => {
@@ -156,26 +193,14 @@ function App() {
     const x = ((e.clientX - rect.left) / rect.width) * 100
     const y = ((e.clientY - rect.top) / rect.height) * 100
 
-    // Update position in specData
     const newSpecData = { ...specData }
-    
-    if (data.type === 'section') {
-      // Update section top position (height auto-calculated)
-      const section = newSpecData.sections[data.sectionIdx] as any
-      if (!section.layout) section.layout = {}
-      section.layout.top = `${y.toFixed(2)}%`
-      // Remove height - it's now auto-calculated
-      delete section.layout.height
-    } else {
-      // Update subsection position
-      const section = newSpecData.sections[data.sectionIdx]
-      if (data.blockIdx !== null && section.blocks) {
-        const subsection = section.blocks[data.blockIdx].subsections[data.subIdx!]
-        subsection.position = { top: `${y.toFixed(2)}%`, left: `${x.toFixed(2)}%` }
-      } else if (section.subsections) {
-        const subsection = section.subsections[data.subIdx!]
-        subsection.position = { top: `${y.toFixed(2)}%`, left: `${x.toFixed(2)}%` }
-      }
+    const section = newSpecData.sections[data.sectionIdx]
+    if (data.blockIdx !== null && section.blocks) {
+      const subsection = section.blocks[data.blockIdx].subsections[data.subIdx!]
+      subsection.position = { top: `${y.toFixed(2)}%`, left: `${x.toFixed(2)}%` }
+    } else if (section.subsections) {
+      const subsection = section.subsections[data.subIdx!]
+      subsection.position = { top: `${y.toFixed(2)}%`, left: `${x.toFixed(2)}%` }
     }
 
     setSpecData(newSpecData)
@@ -440,7 +465,7 @@ function App() {
 
           {editMode && (
             <div className="text-xs text-slate-400 mb-3 p-2 bg-blue-900/20 rounded">
-              💡 Drag blue section labels to reposition boundaries<br />
+              💡 Grab blue section labels to slide boundaries up/down<br />
               💡 Drag red tags to reposition them on the screenshot
             </div>
           )}
@@ -482,7 +507,7 @@ function App() {
         {!loading && !error && specData && (
           <div className="relative" style={{ transform: `scale(${zoom / 100})`, transformOrigin: 'top left' }}>
             {/* Screenshot container */}
-            <div className="relative w-[1440px]">
+            <div ref={canvasRef} className="relative w-[1440px]">
               {/* Screenshot or fallback */}
               <div 
                 className="relative w-full bg-slate-800 border border-slate-700"
@@ -528,9 +553,11 @@ function App() {
                       }}
                     >
                       <div 
-                        draggable={editMode}
-                        onDragStart={(e) => handleDragStart(e, 'section', idx, null, null)}
-                        className={`absolute top-0 left-0 bg-blue-600 text-white px-2 py-1 text-xs font-semibold ${editMode ? 'cursor-move' : 'pointer-events-none'}`}
+                        onPointerDown={(e) => handleSectionPointerDown(e, idx)}
+                        onPointerMove={handleSectionPointerMove}
+                        onPointerUp={handleSectionPointerUp}
+                        className={`absolute top-0 left-0 bg-blue-600 text-white px-2 py-1 text-xs font-semibold select-none ${editMode ? 'cursor-grab active:cursor-grabbing pointer-events-auto' : 'pointer-events-none'}`}
+                        style={{ touchAction: 'none' }}
                       >
                         {section.section_name} — {section['data-page-section']}
                       </div>
@@ -565,7 +592,7 @@ function App() {
                       <div
                         key={`${sIdx}-${bIdx}-${subIdx}`}
                         draggable={editMode}
-                        onDragStart={(e) => handleDragStart(e, 'subsection', sIdx, bIdx, subIdx)}
+                        onDragStart={(e) => handleDragStart(e, sIdx, bIdx, subIdx)}
                         className={`absolute bg-red-500 text-white px-3 py-1 text-xs font-semibold rounded ${editMode ? 'cursor-move hover:bg-red-600' : ''}`}
                         style={{
                           top: subsection.position?.top || `${sIdx * 10 + 2 + subIdx * 0.5}%`,
@@ -586,7 +613,7 @@ function App() {
                     <div
                       key={`${sIdx}-direct-${subIdx}`}
                       draggable={editMode}
-                      onDragStart={(e) => handleDragStart(e, 'subsection', sIdx, null, subIdx)}
+                      onDragStart={(e) => handleDragStart(e, sIdx, null, subIdx)}
                       className={`absolute bg-red-500 text-white px-3 py-1 text-xs font-semibold rounded ${editMode ? 'cursor-move hover:bg-red-600' : ''}`}
                       style={{
                         top: subsection.position?.top || `${sIdx * 10 + 2 + subIdx * 0.5}%`,
