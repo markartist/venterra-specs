@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && tsx src/compiler/cli.ts compile-all --out-dir ./dist/compiled-specs --spec-dir ./specs",
     "dev": "vite",
     "compile-spec": "tsx src/compiler/cli.ts",
     "compile-all": "tsx src/compiler/cli.ts compile-all",
