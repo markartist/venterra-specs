@@ -1,0 +1,83 @@
+Venterra Governed Spec Contract
+Spec Version: v1.0
+Export Format: ExportSpec v1.0
+Mode: Page
+Target: gallery
+Build Timestamp (Central Time): February 22, 2026 at 7:21:41 PM
+Contract ID: ARCH-GALLERY-V1
+Export Hash: H2MVMX
+
+================================================================================
+SITE-LEVEL ATTRIBUTES (Place on <body> tag)(Use Heap Functions to call the below)
+================================================================================
+
+data-property-name="Apex West Midtown"
+data-property-code="TX054"
+data-site-archetype="property_marketing_v1"
+data-site-page-template="homepage-apartments-features-amenities-gallery-neighborhood-contact-specials-reviews-faqs-about"
+data-site-page-template-version="1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0"
+data-site-same-store-date="2026-03-15" # this date is when the site goes into production
+
+================================================================================
+PAGE-LEVEL ATTRIBUTES (Place on main page container)(Use Heap Functions to call the below)
+================================================================================
+
+data-page-template="gallery"
+data-page-template-version="1.0"
+data-banner="[]" # populate if a banner is loaded
+
+================================================================================
+INTERACTIVE ELEMENTS (CTAs, Buttons, Links)
+================================================================================
+
+section_01: SECTION_01_HERO
+data-page-section = "hero"
+data-page-section-location = "1"
+
+---------------------------
+
+section_02: SECTION_02_GALLERY_GRID
+data-page-section = "gallery_grid"
+data-page-section-location = "2"
+
+Subsection: all_photos_and_3d_videos
+data-component-name = "all_photos_and_3d_videos"
+data-action = "apply_filter"
+
+Subsection: photos
+data-component-name = "photos"
+data-action = "apply_filter"
+
+Subsection: 3d_videos
+data-component-name = "3d_videos"
+data-action = "apply_filter"
+
+Subsection: apartment
+data-component-name = "apartment"
+data-action = "apply_filter"
+
+Subsection: community
+data-component-name = "community"
+data-action = "apply_filter"
+
+Subsection: gallery_media
+data-component-name = "gallery_media"
+data-action = "open_media"
+
+Subsection: next_media
+data-component-name = "next_media"
+
+Subsection: prev_media
+data-component-name = "prev_media"
+
+================================================================================
+END OF VENTERRA GOVERNED SPEC CONTRACT
+================================================================================
+
+Contract ID: ARCH-GALLERY-V1
+Export Hash: H2MVMX
+Generated: 2/22/2026, 8:21:41 PM
+Total Sections: 2
+Total Blocks: 3
+Total Subsections: 5
+Modified Elements: 0

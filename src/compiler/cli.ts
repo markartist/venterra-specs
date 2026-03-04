@@ -19,15 +19,19 @@ USAGE:
   compile-spec <input.txt> --out <output.json>
   compile-spec <input.txt>                         # outputs to stdout
   compile-all --out-dir <directory>                # compiles all *_governed_spec.txt
+  validate --dir <directory>                       # validates compiled JSON
 
 EXAMPLES:
   compile-spec homepage_governed_spec.txt --out homepage.json
   compile-spec homepage_governed_spec.txt > homepage.json
   compile-all --out-dir ./dist/specs
+  compile-all --out-dir ./dist/specs --spec-dir ./specs
+  validate --dir ./compiled-specs
 
 OPTIONS:
   --out <file>       Output file (default: stdout)
   --out-dir <dir>    Output directory for compile-all
+  --spec-dir <dir>   Source directory for spec TXT files (default: ./specs)
   --help             Show this help
   `);
 }
@@ -59,14 +63,15 @@ function compileSpec(inputPath: string, outputPath?: string) {
   }
 }
 
-function compileAll(outputDir: string) {
+function compileAll(outputDir: string, specDir: string = './specs') {
   try {
-    // Find all *_governed_spec.txt files in current directory
-    const files = fs.readdirSync('.')
+    // Find all *_governed_spec.txt files in spec directory
+    const resolvedSpecDir = path.resolve(specDir);
+    const files = fs.readdirSync(resolvedSpecDir)
       .filter(f => f.endsWith('_governed_spec.txt') || f.endsWith('_governed_spec_new.txt'));
     
     if (files.length === 0) {
-      console.error('✗ No governed spec files found (*_governed_spec.txt)');
+      console.error(`✗ No governed spec files found in ${resolvedSpecDir}`);
       return false;
     }
     
@@ -79,10 +84,11 @@ function compileAll(outputDir: string) {
     let failCount = 0;
     
     for (const file of files) {
+      const inputPath = path.join(resolvedSpecDir, file);
       const outputName = file.replace(/_governed_spec(_new)?\.txt$/, '.json');
       const outputPath = path.join(outputDir, outputName);
       
-      const success = compileSpec(file, outputPath);
+      const success = compileSpec(inputPath, outputPath);
       if (success) {
         successCount++;
       } else {
@@ -119,8 +125,21 @@ if (args[0] === 'compile-all') {
   }
   
   const outputDir = args[outDirIndex + 1];
-  const success = compileAll(outputDir);
+  const specDirIndex = args.indexOf('--spec-dir');
+  const specDir = specDirIndex !== -1 && args[specDirIndex + 1] ? args[specDirIndex + 1] : './specs';
+  const success = compileAll(outputDir, specDir);
   process.exit(success ? 0 : 1);
+} else if (args[0] === 'validate') {
+  // Lazy import to avoid loading zod unless needed
+  import('./schema').then(({ validateDir }) => {
+    const dirIndex = args.indexOf('--dir');
+    if (dirIndex === -1 || !args[dirIndex + 1]) {
+      console.error('✗ --dir required for validate');
+      process.exit(1);
+    }
+    const success = validateDir(args[dirIndex + 1]);
+    process.exit(success ? 0 : 1);
+  });
 } else {
   const inputPath = args[0];
   

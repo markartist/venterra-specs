@@ -1,0 +1,135 @@
+Venterra Governed Spec Contract
+Spec Version: v1.0
+Export Format: ExportSpec v1.0
+Mode: Page
+Target: amenities
+Build Timestamp (Central Time): February 22, 2026 at 4:54:00 PM
+Contract ID: ARCH-AMENITIES-V1
+Export Hash: KB8QKZ
+
+================================================================================
+SITE-LEVEL ATTRIBUTES (Place on <body> tag)(Use Heap Functions to call the below)
+================================================================================
+
+data-property-name="Apex West Midtown"
+data-property-code="TX054"
+data-site-archetype="property_marketing_v1"
+data-site-page-template="homepage-apartments-features-amenities-gallery-neighborhood-contact-specials-reviews-faqs-about"
+data-site-page-template-version="1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0"
+data-site-same-store-date="2026-03-15" # this date is when the site goes into production
+
+================================================================================
+PAGE-LEVEL ATTRIBUTES (Place on main page container)(Use Heap Functions to call the below)
+================================================================================
+
+data-page-template="amenities"
+data-page-template-version="1.0"
+data-banner="[]" # populate if a banner is loaded
+
+================================================================================
+INTERACTIVE ELEMENTS (CTAs, Buttons, Links)
+================================================================================
+
+section_01: SECTION_01
+data-page-section = "hero"
+data-page-section-location = "1"
+
+---------------------------
+
+section_02: SECTION_02
+data-page-section = "explore_life_with_venterra"
+data-page-section-location = "2"
+
+---------------------------
+
+section_03: SECTION_03
+data-page-section = "outdoor_entertainment_deck"
+data-page-section-location = "3"
+
+Subsection: view_details
+data-component-name = "view_details"
+data-action = "show_information"
+
+---------------------------
+
+section_04: SECTION_04
+data-page-section = "lifestyle_benefits"
+data-page-section-location = "4"
+
+Block: tab_navigation
+data-sub-section = "tab_navigation"
+
+Subsection: tab_pet_info
+data-component-name = "tab_pet_info"
+data-action = "show_information"
+
+Subsection: tab_tech_info
+data-component-name = "tab_tech_info"
+data-action = "show_information"
+
+Subsection: tab_perks_info
+data-component-name = "tab_perks_info"
+data-action = "show_information"
+
+Block: pet_details
+data-sub-section = "pet_details"
+
+Subsection: expand_pet_policy
+data-component-name = "expand_pet_details"
+Data-action = "show_information"
+
+Block: tech_details
+data-sub-section = "tech_details"
+
+Subsection: expand_tech_details
+data-component-name = "expand_tech_details"
+Data-action = "show_information"
+
+Block: perk_details
+data-sub-section = "perk_details"
+
+Subsection: expand_leaders_info
+data-component-name = "expand_leaders_info"
+Data-action = "show_information"
+
+Subsection: contact_us
+data-component-name = "contact_us"
+Data-action = "navigate_contact"
+
+Subsection: expand_maintenance_info
+data-component-name = "expand_maintenance_info"
+Data-action = "show_information"
+
+Subsection: expand_handyman_service_info
+data-component-name = "expand_handyman_service_info"
+Data-action = "show_information"
+
+Subsection: expand_move_in_info
+data-component-name = "expand_move_in_info"
+Data-action = "show_information"
+
+---------------------------
+
+section_05: SECTION_05
+data-page-section = "community_amenities"
+data-page-section-location = "5"
+
+Subsection: amenity_image
+data-component-name = "amenity_image"
+data-action = "show_image"
+
+Subsection: amenity_image
+data-component-name = "amenity_3d_video"
+data-action = "show_3d_video"
+
+================================================================================
+END OF VENTERRA GOVERNED SPEC CONTRACT
+================================================================================
+
+Contract ID: ARCH-AMENITIES-V1
+Export Hash: KB8QKZ
+Generated: 2/22/2026, 5:54:00 PM
+Total Sections: 6
+Total Blocks: 10
+Total Subsections: 11
+Modified Elements: 0

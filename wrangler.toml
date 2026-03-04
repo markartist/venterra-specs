@@ -1,13 +1,8 @@
 name = "venterra-specs"
 compatibility_date = "2024-01-01"
-
 pages_build_output_dir = "dist"
 
-[build]
-command = "npm run build"
-
-[env.production]
-name = "venterra-specs"
-routes = [
-  { pattern = "specs.venterradev.com", custom_domain = true }
-]
+# KV Namespace binding for position storage
+[[kv_namespaces]]
+binding = "POSITIONS"
+id = "4225c26d4b8146a5b7735411a970d703"

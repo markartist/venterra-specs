@@ -1,0 +1,165 @@
+Venterra Governed Spec Contract
+Spec Version: v1.0
+Export Format: ExportSpec v1.0
+Mode: Page
+Target: faqs
+Build Timestamp (Central Time): February 22, 2026 at 7:17:14 PM
+Contract ID: ARCH-FAQS-V1
+Export Hash: ZFNZJC
+
+================================================================================
+SITE-LEVEL ATTRIBUTES (Place on <body> tag)(Use Heap Functions to call the below)
+================================================================================
+
+data-property-name="Apex West Midtown"
+data-property-code="TX054"
+data-site-archetype="property_marketing_v1"
+data-site-page-template="homepage-apartments-features-amenities-gallery-neighborhood-contact-specials-reviews-faqs-about"
+data-site-page-template-version="1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0"
+data-site-same-store-date="2026-03-15" # this date is when the site goes into production
+
+================================================================================
+PAGE-LEVEL ATTRIBUTES (Place on main page container)(Use Heap Functions to call the below)
+================================================================================
+
+data-page-template="faqs"
+data-page-template-version="1.0"
+data-banner="[]" # populate if a banner is loaded
+
+================================================================================
+INTERACTIVE ELEMENTS (CTAs, Buttons, Links)
+================================================================================
+
+section_01: HERO
+data-page-section = "hero"
+data-page-section-location = "1"
+
+---------------------------
+
+section_02: FAQ_CONTENT
+data-page-section = "faq_content"
+data-page-section-location = "2"
+
+Subsection: self_guided_tour
+data-component-name = "self_guided_tour"
+data-action = "show_information"
+
+Subsection: apply_cost
+data-component-name = "apply_cost"
+data-action = "show_information"
+
+Subsection: parking_options
+data-component-name = "parking_options"
+data-action = "show_information"
+
+Subsection: online_packages
+data-component-name = "online_packages"
+data-action = "show_information"
+
+Subsection: activity_director
+data-component-name = "activity_director"
+data-action = "show_information"
+
+Subsection: trash_pickup
+data-component-name = "trash_pickup"
+data-action = "show_information"
+
+Subsection: dog_park
+data-component-name = "dog_park"
+data-action = "show_information"
+
+Subsection: parking_permit
+data-component-name = "parking_permit"
+data-action = "show_information"
+
+Subsection: guest_parking
+data-component-name = "guest_parking"
+data-action = "show_information"
+
+Subsection: pool_hours
+data-component-name = "pool_hours"
+data-action = "show_information"
+
+Subsection: pool_pass
+data-component-name = "pool_pass"
+data-action = "show_information"
+
+Subsection: pool_cabby
+data-component-name = "pool_cabby"
+data-action = "show_information"
+
+Subsection: pool_fob
+data-component-name = "pool_fob"
+data-action = "show_information"
+
+Subsection: clubhouse_rentals
+data-component-name = "clubhouse_rentals"
+data-action = "show_information"
+
+Subsection: fitness_hours
+data-component-name = "fitness_hours"
+data-action = "show_information"
+
+Subsection: amenity_reservations
+data-component-name = "amenity_reservations"
+data-action = "show_information"
+
+Subsection: pest_control
+data-component-name = "pest_control"
+data-action = "show_information"
+
+Subsection: pool_parties
+data-component-name = "pool_parties"
+data-action = "show_information"
+
+Subsection: mailbox_numbers
+data-component-name = "mailbox_numbers"
+data-action = "show_information"
+
+Subsection: compactor_location
+data-component-name = "compactor_location"
+data-action = "show_information"
+
+Subsection: move_hours
+data-component-name = "move_hours"
+data-action = "show_information"
+
+Subsection: grills
+data-component-name = "grills"
+data-action = "show_information"
+
+Subsection: cable_wifi
+data-component-name = "cable_wifi"
+data-action = "show_information"
+
+Subsection: utilities
+data-component-name = "utilities"
+data-action = "show_information"
+
+Subsection: top_amenities
+data-component-name = "top_amenities"
+data-action = "show_information"
+
+Subsection: replacement_permit
+data-component-name = "replacement_permit"
+data-action = "show_information"
+
+Subsection: temporary_permit
+data-component-name = "temporary_permit"
+data-action = "show_information"
+
+Subsection: permit_cost
+data-component-name = "permit_cost"
+data-action = "show_information"
+
+================================================================================
+END OF VENTERRA GOVERNED SPEC CONTRACT
+================================================================================
+
+Contract ID: ARCH-FAQS-V1
+Export Hash: ZFNZJC
+Generated: 2/22/2026, 8:17:14 PM
+Total Sections: 2
+Total Blocks: 3
+Total Subsections: 28
+Modified Elements: 0

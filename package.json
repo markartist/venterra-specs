@@ -1,5 +1,5 @@
 {
-  "name": "@figma/my-make-file",
+  "name": "@venterra/specs",
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -8,6 +8,11 @@
     "dev": "vite",
     "compile-spec": "tsx src/compiler/cli.ts",
     "compile-all": "tsx src/compiler/cli.ts compile-all",
+    "test": "vitest run",
+    "extract": "tsx src/extractor/cli.ts extract",
+    "extract-all": "tsx src/extractor/cli.ts extract-all",
+    "predeploy": "tsx src/compiler/cli.ts compile-all --out-dir ./public/compiled-specs --spec-dir ./specs",
+    "deploy": "vite build && tsx src/compiler/cli.ts compile-all --out-dir ./dist/compiled-specs --spec-dir ./specs && cp -r functions dist/",
     "fix-sections": "node --input-type=module -e \"import fs from 'fs'; let c=fs.readFileSync('./src/layouts/pages/homepage.json','utf8'); c=c.replace(/\\\"section_01\\\"/g,'\\\"1\\\"').replace(/\\\"section_02\\\"/g,'\\\"2\\\"').replace(/\\\"section_03\\\"/g,'\\\"3\\\"').replace(/\\\"section_04\\\"/g,'\\\"4\\\"').replace(/\\\"section_05\\\"/g,'\\\"5\\\"').replace(/\\\"section_06\\\"/g,'\\\"6\\\"').replace(/\\\"section_07\\\"/g,'\\\"7\\\"').replace(/\\\"section_08\\\"/g,'\\\"8\\\"').replace(/\\\"section_09\\\"/g,'\\\"9\\\"').replace(/\\\"section_10\\\"/g,'\\\"10\\\"'); fs.writeFileSync('./src/layouts/pages/homepage.json',c,'utf8'); console.log('✅ Fixed');\""
   },
   "dependencies": {
@@ -39,8 +44,8 @@
     "@radix-ui/react-slot": "1.1.2",
     "@radix-ui/react-switch": "1.1.3",
     "@radix-ui/react-tabs": "1.1.3",
-    "@radix-ui/react-toggle-group": "1.1.2",
     "@radix-ui/react-toggle": "1.1.2",
+    "@radix-ui/react-toggle-group": "1.1.2",
     "@radix-ui/react-tooltip": "1.1.8",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
@@ -69,10 +74,13 @@
     "@tailwindcss/vite": "4.1.12",
     "@types/node": "^22.10.5",
     "@vitejs/plugin-react": "4.7.0",
+    "playwright": "^1.58.2",
     "tailwindcss": "4.1.12",
     "tsx": "^4.19.2",
     "typescript": "^5.7.3",
-    "vite": "6.3.5"
+    "vite": "6.3.5",
+    "vitest": "^4.0.18",
+    "zod": "^4.3.6"
   },
   "peerDependencies": {
     "react": "18.3.1",

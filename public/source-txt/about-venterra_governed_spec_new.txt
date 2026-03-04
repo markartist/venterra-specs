@@ -1,0 +1,109 @@
+Venterra Governed Spec Contract
+Spec Version: v1.0
+Export Format: ExportSpec v1.0
+Mode: Page
+Target: about-venterra
+Build Timestamp (Central Time): February 22, 2026 at 5:52:50 PM
+Contract ID: ARCH-ABOUTVENTERRA-V1
+Export Hash: EXD4GJ
+
+================================================================================
+SITE-LEVEL ATTRIBUTES (Place on <body> tag)(Use Heap Functions to call the below)
+================================================================================
+
+data-property-name="Apex West Midtown"
+data-property-code="TX054"
+data-site-archetype="property_marketing_v1"
+data-site-page-template="homepage-apartments-features-amenities-gallery-neighborhood-contact-specials-reviews-faqs-about"
+data-site-page-template-version="1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0"
+data-site-same-store-date="2026-03-15" # this date is when the site goes into production
+
+================================================================================
+PAGE-LEVEL ATTRIBUTES (Place on main page container)(Use Heap Functions to call the below)
+================================================================================
+
+data-page-template="about_venterra"
+data-page-template-version="1.0"
+data-banner="[]" # populate if a banner is loaded
+
+================================================================================
+INTERACTIVE ELEMENTS (CTAs, Buttons, Links)
+================================================================================
+
+section_01: SECTION_01_HERO
+data-page-section = "hero"
+data-page-section-location = "1"
+
+---------------------------
+
+section_02: SECTION_02_VALUE_PROPS
+data-page-section = "value_props"
+data-page-section-location = "2"
+
+Subsection: 30_day_move_in_guarantee
+data-component-name = "30_day_move_in_guarantee"
+data-action = "show_information"
+
+Subsection: easy_transfers
+data-component-name = "easy_transfers"
+data-action = "show_information"
+
+Subsection: referral_rewards
+data-component-name = "referral_rewards"
+data-action = "show_information"
+
+Subsection: how_we_wow
+data-component-name = "how_we_wow"
+data-action = "show_information"
+
+Subsection: see_for_yourself
+data-component-name = "see_for_yourself"
+data-action = "navigate_enterprise_site"
+
+Subsection: care_means_more
+data-component-name = "care_means_more"
+data-action = "show_information"
+
+---------------------------
+
+section_03: SECTION_03_SERVICE_PROMISES
+data-page-section = "service_promises"
+data-page-section-location = "3"
+
+Subsection: view_core_values
+data-component-name = "view_core_values"
+data-action = "navigate_corporate_site"
+
+---------------------------
+
+section_04: SECTION_04_LIVING_EXPERIENCE
+data-page-section = "living_experience"
+data-page-section-location = "4"
+
+Subsection: pet_friendly
+data-component-name = "pet_friendly"
+data-action = "show_information"
+
+Subsection: maintenance_guarantee
+data-component-name = "maintenance_guarantee"
+data-action = "show_information"
+
+Subsection: handy_man_services
+data-component-name = "handy_man_services"
+data-action = "show_information"
+
+Subsection: modern_convenience
+data-component-name = "modern_convenience"
+data-action = "show_information"
+
+================================================================================
+END OF VENTERRA GOVERNED SPEC CONTRACT
+================================================================================
+
+Contract ID: ARCH-ABOUTVENTERRA-V1
+Export Hash: EXD4GJ
+Generated: 2/22/2026, 6:52:50 PM
+Total Sections: 4
+Total Blocks: 20
+Total Subsections: 12
+Modified Elements: 0

@@ -1,0 +1,218 @@
+Venterra Governed Spec Contract
+Spec Version: v1.0
+Export Format: ExportSpec v1.0
+Mode: Page
+Target: homepage
+Build Timestamp (Central Time): February 20, 2026 at 8:14:40 AM
+Contract ID: ARCH-HOMEPAGE-V1
+Export Hash: R11RP2
+
+================================================================================
+SITE-LEVEL ATTRIBUTES (Place on <body> tag)(Use Heap Functions to call the below)
+================================================================================
+
+data-property-name="Apex West Midtown"
+data-property-code="TX054"
+data-site-archetype="property_marketing_v1"
+data-site-page-template="homepage-apartments-features-amenities-gallery-neighborhood-contact-specials-reviews-faqs-about"
+data-site-page-template-version="1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0"
+data-site-same-store-date="2026-03-15" # this date is when the site goes into production
+
+================================================================================
+PAGE-LEVEL ATTRIBUTES (Place on main page container)(Use Heap Functions to call the below)
+================================================================================
+
+data-page-template="homepage"
+data-page-template-version="1.0"
+data-banner="[]" # populate if a banner is loaded
+
+================================================================================
+INTERACTIVE ELEMENTS (CTAs, Buttons, Links)
+================================================================================
+
+section_01: PROMO_BAR
+data-page-section = "promo_bar"
+data-page-section-location = "1"
+
+Subsection: open_promo_bar
+Data-component-name = "open_promo_bar"
+
+Subsection: see_specials
+data-component-name = "see_specials"
+Data-action = "navigate_specials"
+
+Subsection: cta_schedule_tour
+data-component-name = "cta_schedule_tour"
+data-action = "navigate_prospect_portal"
+
+---------------------------
+
+section_02: HERO
+data-page-section = "hero"
+data-page-section-location = "2"
+
+Subsection: property_rating
+data-component-name = "property_rating"
+Data-action = "navigate_reviews"
+
+Subsection: find_your_home
+data-component-name = "find_your_home"
+Data-action = "navigate_apartments"
+
+---------------------------
+
+section_03: WELCOME
+data-page-section = "welcome"
+data-page-section-location = "3"
+
+Subsection: see_available_homes
+data-component-name = "see_available_homes"
+Data-action = "navigate_apartments"
+
+---------------------------
+
+section_04: APARTMENT_FEATURES
+data-page-section = "apartment_features"
+data-page-section-location = "4"
+
+Subsection: see_features
+data-component-name = "see_features"
+Data-action = "navigate_features"
+
+---------------------------
+
+section_05: REVIEWS_CAROUSEL
+data-page-section = "reviews_carousel"
+data-page-section-location = "5"
+
+Subsection: carousel_prev_review
+data-component-name = "carousel_prev_review"
+
+Subsection: carousel_next_review
+data-component-name = "carousel_next_review"
+
+Subsection: navigate_reviews
+data-component-name = "see_more_reviews"
+Data-action = "navigate_reviews"
+
+---------------------------
+
+section_06: AMENITIES
+data-page-section = "amenities"
+data-page-section-location = "6"
+
+Subsection: see_amenities
+data-component-name = "see_amenities"
+Data-action = "navigate_amenities"
+
+---------------------------
+
+section_07: LIFESTYLE_BENEFITS
+data-page-section = "lifestyle_benefits"
+data-page-section-location = "7"
+
+Block: tab_navigation
+data-sub-section = "tab_navigation"
+
+Subsection: tab_pet_info
+data-component-name = "tab_pet_info"
+data-action = "show_information"
+
+Subsection: tab_tech_info
+data-component-name = "tab_tech_info"
+data-action = "show_information"
+
+Subsection: tab_perks_info
+data-component-name = "tab_perks_info"
+data-action = "show_information"
+
+Block: pet_details
+data-sub-section = "pet_details"
+
+Subsection: expand_pet_details
+data-component-name = "expand_pet_details"
+Data-action = "show_information"
+
+Block: tech_details
+data-sub-section = "tech_details"
+
+Subsection: expand_tech_details
+data-component-name = "expand_tech_details"
+Data-action = "show_information"
+
+Block: perk_details
+data-sub-section = "perk_details"
+
+Subsection: expand_leaders_info
+data-component-name = "expand_leaders_info"
+Data-action = "show_information"
+
+Subsection: contact_us
+data-component-name = "contact_us"
+Data-action = "navigate_contact"
+
+Subsection: expand_maintenance_info
+data-component-name = "expand_maintenance_info"
+Data-action = "show_information"
+
+Subsection: expand_handyman_service_info
+data-component-name = "expand_handyman_service_info"
+Data-action = "show_information"
+
+Subsection: expand_move_in_info
+data-component-name = "expand_move_in_info"
+Data-action = "show_information"
+
+---------------------------
+
+section_08: NEIGHBORHOOD
+data-page-section = "neighborhood"
+data-page-section-location = "8"
+
+Subsection: see_whats_around
+data-component-name = "see_whats_around"
+Data-action = "navigate_neighborhood"
+
+Subsection: carousel_prev_community_focus
+data-component-name = "carousel_prev_community_focus"
+
+Subsection: carousel_next_community_focus
+data-component-name = "carousel_next_community_focus"
+
+Subsection: easy_commute
+data-component-name = "easy_commute"
+Data-action = "navigate_neighborhood"
+
+Subsection: steps_away
+data-component-name = "steps_away"
+Data-action = "navigate_neighborhood"
+
+Subsection: retail_access
+data-component-name = "retail_access"
+Data-action = "navigate_neighborhood"
+
+Subsection: community_focused
+data-component-name = "community_focused"
+Data-action = "navigate_neighborhood"
+
+---------------------------
+
+section_09: BRAND_VIDEO
+data-page-section = "brand_video"
+data-page-section-location = "9"
+
+Subsection: see_why_venterra
+data-component-name = "see_why_venterra"
+data-action = "navigate_about"
+
+================================================================================
+END OF VENTERRA GOVERNED SPEC CONTRACT
+================================================================================
+
+Contract ID: ARCH-HOMEPAGE-V1
+Export Hash: R11RP2
+Generated: 2/20/2026, 9:14:40 AM
+Total Sections: 9
+Total Blocks: 17
+Total Subsections: 28
+Modified Elements: 0

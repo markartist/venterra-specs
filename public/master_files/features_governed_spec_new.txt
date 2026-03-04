@@ -1,0 +1,75 @@
+Venterra Governed Spec Contract
+Spec Version: v1.1
+Export Format: ExportSpec v1.0
+Mode: Page
+Target: features
+Build Timestamp (Central Time): February 20, 2026 at 9:45:02 AM
+Contract ID: ARCH-FEATURES-V1
+Export Hash: 0SMCQP
+
+================================================================================
+SITE-LEVEL ATTRIBUTES (Place on <body> tag)(Use Heap Functions to call the below)
+================================================================================
+
+data-property-name=Apex West Midtown
+data-property-code=TX054
+data-site-archetype=property_marketing_v1
+data-site-page-template=homepage-apartments-features-amenities-gallery-neighborhood-contact-specials-reviews-faqs-about
+data-site-page-template-version=1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0
+data-site-same-store-date=2026-03-15 # this date is when the site goes into production
+
+================================================================================
+PAGE-LEVEL ATTRIBUTES (Place on main page container)(Use Heap Functions to call the below)
+================================================================================
+
+data-page-template=features
+data-page-template-version=1.0
+data-banner=[] # populate if a banner is loaded
+
+================================================================================
+INTERACTIVE ELEMENTS (CTAs, Buttons, Links)
+================================================================================
+
+section_01: HERO
+data-page-section=hero
+data-page-section-location=1
+
+---------------------------
+
+section_02: FLEXIBILITY_COMFORT
+data-page-section=flexibility_comfort
+data-page-section-location=2
+
+---------------------------
+
+section_03: FEATURE_GALLERY
+data-page-section=feature_gallery
+data-page-section-location=3
+
+---------------------------
+
+section_04: SPACIOUS_LAYOUTS
+data-page-section=spacious_layouts
+data-page-section-location=4
+
+Subsection: see_available_homes
+data-component-name=see_available_homes
+data-action=navigate_apartments
+
+---------------------------
+
+section_05: WHATS_INCLUDED
+data-page-section=whats_included
+data-page-section-location=5
+
+================================================================================
+END OF VENTERRA GOVERNED SPEC CONTRACT
+================================================================================
+
+Contract ID: ARCH-FEATURES-V1
+Export Hash: 0SMCQP
+Generated: 2/20/2026, 10:45:02 AM
+Total Sections: 5
+Total Blocks: 10
+Total Subsections: 1
+Modified Elements: 0

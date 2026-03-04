@@ -1,0 +1,1246 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Compiler: snapshot tests > compiles about-venterra_governed_spec_new.txt to expected JSON 1`] = `
+"{
+  "page_template": "about-venterra",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "hero",
+      "data-page-section-location": "1"
+    },
+    {
+      "section_number": "02",
+      "section_name": "SECTION_02",
+      "data-page-section": "value_props",
+      "data-page-section-location": "2",
+      "subsections": [
+        {
+          "data-component-name": "30_day_move_in_guarantee",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "easy_transfers",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "referral_rewards",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "how_we_wow",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "see_for_yourself",
+          "data-action": "navigate_enterprise_site"
+        },
+        {
+          "data-component-name": "care_means_more",
+          "data-action": "show_information"
+        }
+      ]
+    },
+    {
+      "section_number": "03",
+      "section_name": "SECTION_03",
+      "data-page-section": "service_promises",
+      "data-page-section-location": "3",
+      "subsections": [
+        {
+          "data-component-name": "view_core_values",
+          "data-action": "navigate_corporate_site"
+        }
+      ]
+    },
+    {
+      "section_number": "04",
+      "section_name": "SECTION_04",
+      "data-page-section": "living_experience",
+      "data-page-section-location": "4",
+      "subsections": [
+        {
+          "data-component-name": "pet_friendly",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "maintenance_guarantee",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "handy_man_services",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "modern_convenience",
+          "data-action": "show_information"
+        }
+      ]
+    }
+  ]
+}"
+`;
+
+exports[`Compiler: snapshot tests > compiles amenities_governed_spec_new.txt to expected JSON 1`] = `
+"{
+  "page_template": "amenities",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "hero",
+      "data-page-section-location": "1"
+    },
+    {
+      "section_number": "02",
+      "section_name": "SECTION_02",
+      "data-page-section": "explore_life_with_venterra",
+      "data-page-section-location": "2"
+    },
+    {
+      "section_number": "03",
+      "section_name": "SECTION_03",
+      "data-page-section": "outdoor_entertainment_deck",
+      "data-page-section-location": "3",
+      "subsections": [
+        {
+          "data-component-name": "view_details",
+          "data-action": "show_information"
+        }
+      ]
+    },
+    {
+      "section_number": "04",
+      "section_name": "SECTION_04",
+      "data-page-section": "lifestyle_benefits",
+      "data-page-section-location": "4",
+      "blocks": [
+        {
+          "subsections": [
+            {
+              "data-component-name": "tab_pet_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "tab_tech_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "tab_perks_info",
+              "data-action": "show_information"
+            }
+          ],
+          "block_id": "tab_navigation",
+          "data-sub-section": "tab_navigation"
+        },
+        {
+          "subsections": [
+            {
+              "data-component-name": "expand_pet_details",
+              "data-action": "show_information"
+            }
+          ],
+          "block_id": "pet_details",
+          "data-sub-section": "pet_details"
+        },
+        {
+          "subsections": [
+            {
+              "data-component-name": "expand_tech_details",
+              "data-action": "show_information"
+            }
+          ],
+          "block_id": "tech_details",
+          "data-sub-section": "tech_details"
+        },
+        {
+          "subsections": [
+            {
+              "data-component-name": "expand_leaders_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "contact_us",
+              "data-action": "navigate_contact"
+            },
+            {
+              "data-component-name": "expand_maintenance_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "expand_handyman_service_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "expand_move_in_info",
+              "data-action": "show_information"
+            }
+          ],
+          "block_id": "perk_details",
+          "data-sub-section": "perk_details"
+        }
+      ]
+    },
+    {
+      "section_number": "05",
+      "section_name": "SECTION_05",
+      "data-page-section": "community_amenities",
+      "data-page-section-location": "5",
+      "subsections": [
+        {
+          "data-component-name": "amenity_image",
+          "data-action": "show_image"
+        },
+        {
+          "data-component-name": "amenity_3d_video",
+          "data-action": "show_3d_video"
+        }
+      ]
+    }
+  ]
+}"
+`;
+
+exports[`Compiler: snapshot tests > compiles apartment-details_governed_spec_new.txt to expected JSON 1`] = `
+"{
+  "page_template": "apartment_details",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "apartment_details",
+      "data-page-section-location": "1",
+      "blocks": [
+        {
+          "subsections": [
+            {
+              "data-component-name": "tab_pet_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "tab_tech_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "tab_perks_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "expand_leaders_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "contact_us",
+              "data-action": "navigate_contact"
+            },
+            {
+              "data-component-name": "expand_maintenance_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "expand_handyman_service_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "expand_move_in_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "see_for_yourself",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "cta_get_approved_now",
+              "data-action": "navigate_prospect_portal"
+            }
+          ],
+          "block_id": "perk_details",
+          "data-sub-section": "lifestyle_benefits"
+        },
+        {
+          "subsections": [
+            {
+              "data-component-name": "similar_unit_details",
+              "data-action": "navigate_apartment_details"
+            },
+            {
+              "data-component-name": "cta_price_quote",
+              "data-action": "navigate_prospect_portal"
+            },
+            {
+              "data-component-name": "cta_apply_now",
+              "data-action": "navigate_prospect_portal"
+            },
+            {
+              "data-component-name": "cta_schedule_tour",
+              "data-action": "navigate_prospect_portal"
+            }
+          ],
+          "block_id": "similar_apartments",
+          "data-sub-section": "similar_apartments"
+        }
+      ],
+      "subsections": [
+        {
+          "data-component-name": "apartment_virtual_tour",
+          "data-action": "open_media"
+        },
+        {
+          "data-component-name": "apartment_location",
+          "data-action": "open_media"
+        },
+        {
+          "data-component-name": "apartment_features_photos",
+          "data-action": "open_media"
+        },
+        {
+          "data-component-name": "see_how_we_are_different",
+          "data-action": "show_information"
+        }
+      ]
+    }
+  ]
+}"
+`;
+
+exports[`Compiler: snapshot tests > compiles apartments_governed_spec_new.txt to expected JSON 1`] = `
+"{
+  "page_template": "apartments",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "hero",
+      "data-page-section-location": "1"
+    },
+    {
+      "section_number": "02",
+      "section_name": "SECTION_02",
+      "data-page-section": "apartment_listings",
+      "data-page-section-location": "2",
+      "subsections": [
+        {
+          "data-component-name": "studio",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "1bed",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "2bed",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "3bed",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "move_in_date",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "max_budget",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "apartments_list_view"
+        },
+        {
+          "data-component-name": "apartments_grid_view"
+        },
+        {
+          "data-component-name": "apartments_map_view"
+        },
+        {
+          "data-component-name": "unit_floorplan",
+          "data-action": "navigate_apartment_details"
+        },
+        {
+          "data-component-name": "unit_bed_bath",
+          "data-action": "navigate_apartment_details"
+        },
+        {
+          "data-component-name": "unit_details_and_price",
+          "data-action": "navigate_apartment_details"
+        }
+      ]
+    }
+  ]
+}"
+`;
+
+exports[`Compiler: snapshot tests > compiles contact_governed_spec_new.txt to expected JSON 1`] = `
+"{
+  "page_template": "contact",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "hero",
+      "data-page-section-location": "1"
+    },
+    {
+      "section_number": "02",
+      "section_name": "SECTION_02",
+      "data-page-section": "property_info",
+      "data-page-section-location": "2",
+      "subsections": [
+        {
+          "data-component-name": "office_address",
+          "data-action": "navigate_external_maps"
+        },
+        {
+          "data-component-name": "cta_office_phone",
+          "data-action": "initiate_phone_call"
+        },
+        {
+          "data-component-name": "cta_schedule_tour",
+          "data-action": "navigate_prospect_portal"
+        },
+        {
+          "data-component-name": "cta_apply_now",
+          "data-action": "navigate_prospect_portal"
+        }
+      ]
+    },
+    {
+      "section_number": "03",
+      "section_name": "SECTION_03",
+      "data-page-section": "contact_form",
+      "data-page-section-location": "3",
+      "subsections": [
+        {
+          "data-component-name": "cta_contact_form_submit",
+          "data-action": "submit_contact_form"
+        }
+      ]
+    },
+    {
+      "section_number": "04",
+      "section_name": "SECTION_04",
+      "data-page-section": "staff_directory",
+      "data-page-section-location": "4"
+    }
+  ]
+}"
+`;
+
+exports[`Compiler: snapshot tests > compiles faqs_governed_spec_new.txt to expected JSON 1`] = `
+"{
+  "page_template": "faqs",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "hero",
+      "data-page-section-location": "1"
+    },
+    {
+      "section_number": "02",
+      "section_name": "SECTION_02",
+      "data-page-section": "faq_content",
+      "data-page-section-location": "2",
+      "subsections": [
+        {
+          "data-component-name": "self_guided_tour",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "apply_cost",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "parking_options",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "online_packages",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "activity_director",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "trash_pickup",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "dog_park",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "parking_permit",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "guest_parking",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "pool_hours",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "pool_pass",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "pool_cabby",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "pool_fob",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "clubhouse_rentals",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "fitness_hours",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "amenity_reservations",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "pest_control",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "pool_parties",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "mailbox_numbers",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "compactor_location",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "move_hours",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "grills",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "cable_wifi",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "utilities",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "top_amenities",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "replacement_permit",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "temporary_permit",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "permit_cost",
+          "data-action": "show_information"
+        }
+      ]
+    }
+  ]
+}"
+`;
+
+exports[`Compiler: snapshot tests > compiles features_governed_spec_new.txt to expected JSON 1`] = `
+"{
+  "page_template": "features",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "hero",
+      "data-page-section-location": "1"
+    },
+    {
+      "section_number": "02",
+      "section_name": "SECTION_02",
+      "data-page-section": "flexibility_comfort",
+      "data-page-section-location": "2"
+    },
+    {
+      "section_number": "03",
+      "section_name": "SECTION_03",
+      "data-page-section": "feature_gallery",
+      "data-page-section-location": "3"
+    },
+    {
+      "section_number": "04",
+      "section_name": "SECTION_04",
+      "data-page-section": "spacious_layouts",
+      "data-page-section-location": "4",
+      "subsections": [
+        {
+          "data-component-name": "see_available_homes",
+          "data-action": "navigate_apartments"
+        }
+      ]
+    },
+    {
+      "section_number": "05",
+      "section_name": "SECTION_05",
+      "data-page-section": "whats_included",
+      "data-page-section-location": "5",
+      "subsections": [
+        {
+          "data-component-name": "washer_and_dryer",
+          "data-action": "open_modal"
+        },
+        {
+          "data-component-name": "granite_countertops",
+          "data-action": "open_modal"
+        },
+        {
+          "data-component-name": "smart_home_technology",
+          "data-action": "open_modal"
+        }
+      ]
+    }
+  ]
+}"
+`;
+
+exports[`Compiler: snapshot tests > compiles footer-primary_governed_spec_new.txt to expected JSON 1`] = `
+"{
+  "page_template": "footer-primary",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "footer",
+      "data-page-section-location": "01",
+      "subsections": [
+        {
+          "data-component-name": "filter_studios",
+          "data-action": "navigate_apartments"
+        },
+        {
+          "data-component-name": "filter_1bed",
+          "data-action": "navigate_apartments"
+        },
+        {
+          "data-component-name": "filter_2bed",
+          "data-action": "navigate_apartments"
+        },
+        {
+          "data-component-name": "filter_3bed",
+          "data-action": "navigate_apartments"
+        },
+        {
+          "data-component-name": "office_address",
+          "data-action": "navigate_external_maps"
+        },
+        {
+          "data-component-name": "cta_office_phone",
+          "data-action": "initiate_phone_call"
+        },
+        {
+          "data-component-name": "send_a_message",
+          "data-action": "navigate_contact"
+        },
+        {
+          "data-component-name": "smarthub_resident_portal",
+          "data-action": "navigate_resident_portal"
+        },
+        {
+          "data-component-name": "venterra_facebook",
+          "data-action": "navigate_external_facebook"
+        },
+        {
+          "data-component-name": "venterra_instagram",
+          "data-action": "navigate_external_instagram"
+        },
+        {
+          "data-component-name": "cta_apply_now",
+          "data-action": "navigate_prospect_portal"
+        },
+        {
+          "data-component-name": "apartments_and_pricing",
+          "data-action": "navigate_apartments"
+        },
+        {
+          "data-component-name": "features",
+          "data-action": "navigate_features"
+        },
+        {
+          "data-component-name": "amenities",
+          "data-action": "navigate_amenities"
+        },
+        {
+          "data-component-name": "gallery",
+          "data-action": "navigate_gallery"
+        },
+        {
+          "data-component-name": "location",
+          "data-action": "navigate_neighborhood"
+        },
+        {
+          "data-component-name": "expand_pet_policy",
+          "data-action": "show_information"
+        },
+        {
+          "data-component-name": "venterra_logo",
+          "data-action": "navigate_enterprise_site"
+        },
+        {
+          "data-component-name": "privacy_policy",
+          "data-action": "navigate_corporate_site"
+        },
+        {
+          "data-component-name": "terms_of_service",
+          "data-action": "navigate_corporate_site"
+        },
+        {
+          "data-component-name": "resi_logo",
+          "data-action": "navigate_external_resi"
+        }
+      ]
+    }
+  ]
+}"
+`;
+
+exports[`Compiler: snapshot tests > compiles gallery_governed_spec_new.txt to expected JSON 1`] = `
+"{
+  "page_template": "gallery",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "hero",
+      "data-page-section-location": "1"
+    },
+    {
+      "section_number": "02",
+      "section_name": "SECTION_02",
+      "data-page-section": "gallery_grid",
+      "data-page-section-location": "2",
+      "subsections": [
+        {
+          "data-component-name": "all_photos_and_3d_videos",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "photos",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "3d_videos",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "apartment",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "community",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "gallery_media",
+          "data-action": "open_media"
+        },
+        {
+          "data-component-name": "next_media"
+        },
+        {
+          "data-component-name": "prev_media"
+        }
+      ]
+    }
+  ]
+}"
+`;
+
+exports[`Compiler: snapshot tests > compiles homepage_governed_spec_new.txt to expected JSON 1`] = `
+"{
+  "page_template": "homepage",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "promo_bar",
+      "data-page-section-location": "1",
+      "subsections": [
+        {
+          "data-component-name": "open_promo_bar"
+        },
+        {
+          "data-component-name": "see_specials",
+          "data-action": "navigate_specials"
+        },
+        {
+          "data-component-name": "cta_schedule_tour",
+          "data-action": "navigate_prospect_portal"
+        }
+      ]
+    },
+    {
+      "section_number": "02",
+      "section_name": "SECTION_02",
+      "data-page-section": "hero",
+      "data-page-section-location": "2",
+      "subsections": [
+        {
+          "data-component-name": "property_rating",
+          "data-action": "navigate_reviews"
+        },
+        {
+          "data-component-name": "find_your_home",
+          "data-action": "navigate_apartments"
+        }
+      ]
+    },
+    {
+      "section_number": "03",
+      "section_name": "SECTION_03",
+      "data-page-section": "welcome",
+      "data-page-section-location": "3",
+      "subsections": [
+        {
+          "data-component-name": "see_available_homes",
+          "data-action": "navigate_apartments"
+        }
+      ]
+    },
+    {
+      "section_number": "04",
+      "section_name": "SECTION_04",
+      "data-page-section": "apartment_features",
+      "data-page-section-location": "4",
+      "subsections": [
+        {
+          "data-component-name": "see_features",
+          "data-action": "navigate_features"
+        }
+      ]
+    },
+    {
+      "section_number": "05",
+      "section_name": "SECTION_05",
+      "data-page-section": "reviews_carousel",
+      "data-page-section-location": "5",
+      "subsections": [
+        {
+          "data-component-name": "carousel_prev_review"
+        },
+        {
+          "data-component-name": "carousel_next_review"
+        },
+        {
+          "data-component-name": "see_more_reviews",
+          "data-action": "navigate_reviews"
+        }
+      ]
+    },
+    {
+      "section_number": "06",
+      "section_name": "SECTION_06",
+      "data-page-section": "amenities",
+      "data-page-section-location": "6",
+      "subsections": [
+        {
+          "data-component-name": "see_amenities",
+          "data-action": "navigate_amenities"
+        }
+      ]
+    },
+    {
+      "section_number": "07",
+      "section_name": "SECTION_07",
+      "data-page-section": "lifestyle_benefits",
+      "data-page-section-location": "7",
+      "blocks": [
+        {
+          "subsections": [
+            {
+              "data-component-name": "tab_pet_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "tab_tech_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "tab_perks_info",
+              "data-action": "show_information"
+            }
+          ],
+          "block_id": "tab_navigation",
+          "data-sub-section": "tab_navigation"
+        },
+        {
+          "subsections": [
+            {
+              "data-component-name": "expand_pet_details",
+              "data-action": "show_information"
+            }
+          ],
+          "block_id": "pet_details",
+          "data-sub-section": "pet_details"
+        },
+        {
+          "subsections": [
+            {
+              "data-component-name": "expand_tech_details",
+              "data-action": "show_information"
+            }
+          ],
+          "block_id": "tech_details",
+          "data-sub-section": "tech_details"
+        },
+        {
+          "subsections": [
+            {
+              "data-component-name": "expand_leaders_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "contact_us",
+              "data-action": "navigate_contact"
+            },
+            {
+              "data-component-name": "expand_maintenance_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "expand_handyman_service_info",
+              "data-action": "show_information"
+            },
+            {
+              "data-component-name": "expand_move_in_info",
+              "data-action": "show_information"
+            }
+          ],
+          "block_id": "perk_details",
+          "data-sub-section": "perk_details"
+        }
+      ]
+    },
+    {
+      "section_number": "08",
+      "section_name": "SECTION_08",
+      "data-page-section": "neighborhood",
+      "data-page-section-location": "8",
+      "subsections": [
+        {
+          "data-component-name": "see_whats_around",
+          "data-action": "navigate_neighborhood"
+        },
+        {
+          "data-component-name": "carousel_prev_community_focus"
+        },
+        {
+          "data-component-name": "carousel_next_community_focus"
+        },
+        {
+          "data-component-name": "easy_commute",
+          "data-action": "navigate_neighborhood"
+        },
+        {
+          "data-component-name": "steps_away",
+          "data-action": "navigate_neighborhood"
+        },
+        {
+          "data-component-name": "retail_access",
+          "data-action": "navigate_neighborhood"
+        },
+        {
+          "data-component-name": "community_focused",
+          "data-action": "navigate_neighborhood"
+        }
+      ]
+    },
+    {
+      "section_number": "09",
+      "section_name": "SECTION_09",
+      "data-page-section": "brand_video",
+      "data-page-section-location": "9",
+      "subsections": [
+        {
+          "data-component-name": "see_why_venterra",
+          "data-action": "navigate_about"
+        }
+      ]
+    }
+  ]
+}"
+`;
+
+exports[`Compiler: snapshot tests > compiles nav-mobile-menu_governed_spec_new.txt to expected JSON 1`] = `
+"{
+  "page_template": "nav-mobile-menu",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "expanded_navigation",
+      "data-page-section-location": "01",
+      "subsections": [
+        {
+          "data-component-name": "venterra_logo",
+          "data-action": "navigate_homepage"
+        },
+        {
+          "data-component-name": "apartments_and_pricing",
+          "data-action": "navigate_apartments"
+        },
+        {
+          "data-component-name": "features",
+          "data-action": "navigate_features"
+        },
+        {
+          "data-component-name": "amenities",
+          "data-action": "navigate_amenities"
+        },
+        {
+          "data-component-name": "gallery",
+          "data-action": "navigate_gallery"
+        },
+        {
+          "data-component-name": "location",
+          "data-action": "navigate_neighborhood"
+        },
+        {
+          "data-component-name": "faq",
+          "data-action": "navigate_faq"
+        },
+        {
+          "data-component-name": "reviews",
+          "data-action": "navigate_reviews"
+        },
+        {
+          "data-component-name": "contact",
+          "data-action": "navigate_contact"
+        },
+        {
+          "data-component-name": "specials",
+          "data-action": "navigate_specials"
+        },
+        {
+          "data-component-name": "about_venterra",
+          "data-action": "navigate_about"
+        },
+        {
+          "data-component-name": "smarthub_resident_portal",
+          "data-action": "navigate_resident_portal"
+        },
+        {
+          "data-component-name": "cta_schedule_tour",
+          "data-action": "navigate_prospect_portal"
+        },
+        {
+          "data-component-name": "cta_apply_now",
+          "data-action": "navigate_prospect_portal"
+        },
+        {
+          "data-component-name": "cta_office_phone",
+          "data-action": "initiate_phone_call"
+        },
+        {
+          "data-component-name": "venterra_facebook",
+          "data-action": "navigate_external_facebook"
+        },
+        {
+          "data-component-name": "venterra_instagram",
+          "data-action": "navigate_external_instagram"
+        }
+      ]
+    }
+  ]
+}"
+`;
+
+exports[`Compiler: snapshot tests > compiles nav-primary_governed_spec_new.txt to expected JSON 1`] = `
+"{
+  "page_template": "nav-primary",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "header_navigation",
+      "data-page-section-location": "01",
+      "subsections": [
+        {
+          "data-component-name": "cta_office_phone",
+          "data-action": "navigate_prospect_portal"
+        },
+        {
+          "data-component-name": "cta_home_link",
+          "data-action": "navigate_homepage"
+        },
+        {
+          "data-component-name": "cta_apply_now",
+          "data-action": "navigate_prospect_portal"
+        },
+        {
+          "data-component-name": "cta_schedule_tour",
+          "data-action": "navigate_prospect_portal"
+        },
+        {
+          "data-component-name": "open_expanded_navigation"
+        }
+      ]
+    }
+  ]
+}"
+`;
+
+exports[`Compiler: snapshot tests > compiles neighborhood_governed_spec_new.txt to expected JSON 1`] = `
+"{
+  "page_template": "neighborhood",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "hero",
+      "data-page-section-location": "1"
+    },
+    {
+      "section_number": "02",
+      "section_name": "SECTION_02",
+      "data-page-section": "map_explorer",
+      "data-page-section-location": "2",
+      "subsections": [
+        {
+          "data-component-name": "groceries",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "schools",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "shopping",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "restaurants",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "entertainment",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "fitness",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "personal_care",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "coffee",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "bars",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "public_transit",
+          "data-action": "apply_filter"
+        },
+        {
+          "data-component-name": "map_results",
+          "data-action": "show_information"
+        }
+      ]
+    },
+    {
+      "section_number": "03",
+      "section_name": "SECTION_03",
+      "data-page-section": "onsite_retail",
+      "data-page-section-location": "3",
+      "subsections": [
+        {
+          "data-component-name": "carousel_next_space"
+        },
+        {
+          "data-component-name": "carousel_prev_space"
+        },
+        {
+          "data-component-name": "onsite_retail_space",
+          "data-action": "navigate_external_retail_space"
+        }
+      ]
+    }
+  ]
+}"
+`;
+
+exports[`Compiler: snapshot tests > compiles reviews_governed_spec_new.txt to expected JSON 1`] = `
+"{
+  "page_template": "reviews",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "hero",
+      "data-page-section-location": "1"
+    },
+    {
+      "section_number": "02",
+      "section_name": "SECTION_02",
+      "data-page-section": "reviews_content",
+      "data-page-section-location": "2",
+      "subsections": [
+        {
+          "data-component-name": "read_more_reviews",
+          "data-action": "navigate_external_google_reviews"
+        }
+      ]
+    }
+  ]
+}"
+`;
+
+exports[`Compiler: snapshot tests > compiles specials_governed_spec_new.txt to expected JSON 1`] = `
+"{
+  "page_template": "specials",
+  "sections": [
+    {
+      "section_number": "01",
+      "section_name": "SECTION_01",
+      "data-page-section": "hero",
+      "data-page-section-location": "1"
+    },
+    {
+      "section_number": "02",
+      "section_name": "SECTION_02",
+      "data-page-section": "specials_content",
+      "data-page-section-location": "2",
+      "subsections": [
+        {
+          "data-component-name": "see_specials",
+          "data-action": "navigate_specials"
+        },
+        {
+          "data-component-name": "cta_schedule_tour",
+          "data-action": "navigate_prospect_portal"
+        }
+      ]
+    }
+  ]
+}"
+`;

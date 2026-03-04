@@ -1,0 +1,57 @@
+Venterra Governed Spec Contract
+Spec Version: v1.0
+Export Format: ExportSpec v1.0
+Mode: Page
+Target: reviews
+Build Timestamp (Central Time): February 22, 2026 at 5:27:58 PM
+Contract ID: ARCH-REVIEWS-V1
+Export Hash: G7F5GO
+
+================================================================================
+SITE-LEVEL ATTRIBUTES (Place on <body> tag)(Use Heap Functions to call the below)
+================================================================================
+
+data-property-name="Apex West Midtown"
+data-property-code="TX054"
+data-site-archetype="property_marketing_v1"
+data-site-page-template="homepage-apartments-features-amenities-gallery-neighborhood-contact-specials-reviews-faqs-about"
+data-site-page-template-version="1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0"
+data-site-same-store-date="2026-03-15" # this date is when the site goes into production
+
+================================================================================
+PAGE-LEVEL ATTRIBUTES (Place on main page container)(Use Heap Functions to call the below)
+================================================================================
+
+data-page-template="reviews"
+data-page-template-version="1.0"
+data-banner="[]" # populate if a banner is loaded
+
+================================================================================
+INTERACTIVE ELEMENTS (CTAs, Buttons, Links)
+================================================================================
+
+section_01: SECTION_01_HERO
+data-page-section = "hero"
+data-page-section-location = "1"
+
+---------------------------
+
+section_02: SECTION_02_REVIEWS_CONTENT
+data-page-section = "reviews_content"
+data-page-section-location = "2"
+
+Subsection: read_more_reviews
+data-component-name = "read_more_reviews"
+data-action = "navigate_external_google_reviews"
+
+================================================================================
+END OF VENTERRA GOVERNED SPEC CONTRACT
+================================================================================
+
+Contract ID: ARCH-REVIEWS-V1
+Export Hash: G7F5GO
+Generated: 2/22/2026, 6:27:58 PM
+Total Sections: 2
+Total Blocks: 6
+Total Subsections: 1
+Modified Elements: 0

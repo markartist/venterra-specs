@@ -1,0 +1,130 @@
+Venterra Governed Spec Contract
+Spec Version: v1.0
+Export Format: ExportSpec v1.0
+Mode: Component
+Target: footer-primary
+Build Timestamp (Central Time): February 20, 2026 at 10:42:28 AM
+Contract ID: ARCH-FOOTERPRIMARY-V1
+Export Hash: KCCRAE
+
+================================================================================
+SITE-LEVEL ATTRIBUTES (Place on <body> tag)(Use Heap Functions to call the below)
+================================================================================
+
+data-property-name="Apex West Midtown"
+data-property-code="TX054"
+data-site-archetype="property_marketing_v1"
+data-site-page-template="homepage-apartments-features-amenities-gallery-neighborhood-contact-specials-reviews-faqs-about"
+data-site-page-template-version="1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0"
+data-site-same-store-date="2026-03-15" # this date is when the site goes into production
+
+================================================================================
+PAGE-LEVEL ATTRIBUTES (Place on main page container)(Use Heap Functions to call the below)
+================================================================================
+
+data-page-template="footer"
+data-page-template-version="1.0"
+data-banner="[]" # populate if a banner is loaded
+
+================================================================================
+INTERACTIVE ELEMENTS (CTAs, Buttons, Links)
+================================================================================
+
+section_01: FOOTER_MAIN
+data-page-section = "footer"
+
+Subsection: filter_studios
+data-component-name = "filter_studios"
+data-action = "navigate_apartments"
+
+Subsection: filter_1bed
+data-component-name = "filter_1bed"
+data-action = "navigate_apartments"
+
+Subsection: filter_2bed
+data-component-name = "filter_2bed"
+data-action = "navigate_apartments"
+
+Subsection: filter_3bed
+data-component-name = "filter_3bed"
+data-action = "navigate_apartments"
+
+Subsection: office_address
+data-component-name = "office_address"
+data-action = "navigate_external_maps"
+
+Subsection: cta_office_phone
+data-component-name = "cta_office_phone"
+data-action = "initiate_phone_call"
+
+Subsection: send_a_message
+data-component-name = "send_a_message"
+data-action = "navigate_contact"
+
+Subsection: smarthub_resident_portal
+data-component-name = "smarthub_resident_portal"
+data-action = "navigate_resident_portal"
+
+Subsection: venterra_facebook
+data-component-name = "venterra_facebook"
+data-action = "navigate_external_facebook"
+
+Subsection: venterra_instagram
+data-component-name = "venterra_instagram"
+data-action = "navigate_external_instagram"
+
+Subsection: cta_apply_now
+data-component-name = "cta_apply_now"
+data-action = "navigate_prospect_portal"
+
+Subsection: apartments_and_pricing
+data-component-name = "apartments_and_pricing"
+data-action = "navigate_apartments"
+
+Subsection: features
+data-component-name = "features"
+data-action = "navigate_features"
+
+Subsection: amenities
+data-component-name = "amenities"
+data-action = "navigate_amenities"
+
+Subsection: gallery
+data-component-name = "gallery"
+data-action = "navigate_gallery"
+
+Subsection: location
+data-component-name = "location"
+data-action = "navigate_neighborhood"
+
+Subsection: expand_pet_policy
+data-component-name = "expand_pet_policy"
+data-action = "show_information"
+
+Subsection: venterra_logo
+data-component-name = "venterra_logo"
+data-action = "navigate_enterprise_site"
+
+Subsection: privacy_policy
+data-component-name = "privacy_policy"
+data-action = "navigate_corporate_site"
+
+Subsection: terms_of_service
+data-component-name = "terms_of_service"
+data-action = "navigate_corporate_site"
+
+Subsection: resi_logo
+data-component-name = "resi_logo"
+data-action = "navigate_external_resi"
+
+================================================================================
+END OF VENTERRA GOVERNED SPEC CONTRACT
+================================================================================
+
+Contract ID: ARCH-FOOTERPRIMARY-V1
+Export Hash: KCCRAE
+Generated: 2/20/2026, 11:42:28 AM
+Total Sections: 1
+Total Blocks: 5
+Total Subsections: 24
+Modified Elements: 0

@@ -1,0 +1,98 @@
+Venterra Governed Spec Contract
+Spec Version: v1.0
+Export Format: ExportSpec v1.0
+Mode: Page
+Target: apartments
+Build Timestamp (Central Time): February 23, 2026 at 8:10:39 AM
+Contract ID: ARCH-APARTMENTS-V1
+Export Hash: D33CCR
+
+================================================================================
+SITE-LEVEL ATTRIBUTES (Place on <body> tag)(Use Heap Functions to call the below)
+================================================================================
+
+data-property-name="Apex West Midtown"
+data-property-code="TX054"
+data-site-archetype="property_marketing_v1"
+data-site-page-template="homepage-apartments-features-amenities-gallery-neighborhood-contact-specials-reviews-faqs-about"
+data-site-page-template-version="1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0-1.0"
+data-site-same-store-date="2026-03-15" # this date is when the site goes into production
+
+================================================================================
+PAGE-LEVEL ATTRIBUTES (Place on main page container)(Use Heap Functions to call the below)
+================================================================================
+
+data-page-template="apartments"
+data-page-template-version="1.0"
+data-banner="[]" # populate if a banner is loaded
+
+================================================================================
+INTERACTIVE ELEMENTS (CTAs, Buttons, Links)
+================================================================================
+
+section_01: SECTION_01_HERO
+data-page-section = "hero"
+data-page-section-location = "1"
+
+---------------------------
+
+section_02: SECTION_02_APARTMENT_LISTINGS
+data-page-section = "apartment_listings"
+data-page-section-location = "2"
+
+Subsection: studio
+data-component-name = "studio"
+data-action = "apply_filter"
+
+Subsection: 1bed
+data-component-name = "1bed"
+data-action = "apply_filter"
+
+Subsection: 2bed
+data-component-name = "2bed"
+data-action = "apply_filter"
+
+Subsection: 3bed
+data-component-name = "3bed"
+data-action = "apply_filter"
+
+Subsection: move_in_date
+data-component-name = "move_in_date"
+data-action = "apply_filter"
+
+Subsection: max_budget
+data-component-name = "max_budget"
+data-action = "apply_filter"
+
+Subsection: apartments_list_view
+data-component-name = "apartments_list_view"
+
+Subsection: apartments_grid_view
+data-component-name = "apartments_grid_view"
+
+Subsection: apartments_map_view
+data-component-name = "apartments_map_view"
+
+Subsection: unit_floorplan
+data-component-name = "unit_floorplan"
+data-action = "navigate_apartment_details"
+
+Subsection: unit_bed_bath
+data-component-name = "unit_bed_bath"
+data-action = "navigate_apartment_details"
+
+Subsection: unit_details_and_price
+data-component-name = "unit_details_and_price"
+data-action = "navigate_apartment_details"
+
+================================================================================
+END OF VENTERRA GOVERNED SPEC CONTRACT
+================================================================================
+
+Contract ID: ARCH-APARTMENTS-V1
+Export Hash: D33CCR
+Generated: 2/23/2026, 9:10:39 AM
+Total Sections: 4
+Total Blocks: 6
+Total Subsections: 11
+Modified Elements: 0

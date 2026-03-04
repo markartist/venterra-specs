@@ -35,7 +35,21 @@
       "section_number": "05",
       "section_name": "SECTION_05",
       "data-page-section": "whats_included",
-      "data-page-section-location": "5"
+      "data-page-section-location": "5",
+      "subsections": [
+        {
+          "data-component-name": "washer_and_dryer",
+          "data-action": "open_modal"
+        },
+        {
+          "data-component-name": "granite_countertops",
+          "data-action": "open_modal"
+        },
+        {
+          "data-component-name": "smart_home_technology",
+          "data-action": "open_modal"
+        }
+      ]
     }
   ]
 }
