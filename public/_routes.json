@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "include": ["/api/*"],
+  "exclude": [
+    "/screenshots/*",
+    "/compiled-specs/*",
+    "/source-txt/*",
+    "/assets/*",
+    "/logo.svg",
+    "/favicon.ico"
+  ]
+}
