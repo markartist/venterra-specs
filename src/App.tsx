@@ -224,8 +224,8 @@ function App() {
         overrides[sectionKey] = section.layout
       }
       
-      section.blocks?.forEach((block, bIdx) => {
-        block.subsections.forEach((subsection, subIdx) => {
+      section.blocks?.forEach((block: Block, bIdx: number) => {
+        block.subsections.forEach((subsection: Subsection, subIdx: number) => {
           if (subsection.position) {
             const key = `${sIdx}-${bIdx}-${subIdx}`
             overrides[key] = subsection.position
@@ -233,7 +233,7 @@ function App() {
         })
       })
       
-      section.subsections?.forEach((subsection, subIdx) => {
+      section.subsections?.forEach((subsection: Subsection, subIdx: number) => {
         if (subsection.position) {
           const key = `${sIdx}-direct-${subIdx}`
           overrides[key] = subsection.position
