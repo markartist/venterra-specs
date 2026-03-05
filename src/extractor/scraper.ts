@@ -64,7 +64,53 @@ function cleanAttrValue(val: string | null): string | null {
   return val.replace(/^[\s"']+|[\s"']+$/g, '').replace(/\\"/g, '');
 }
 
-// ── Browser-side extraction (runs in page context via evaluate) ────────────
+// ── Browser-side scripts (run in page context via evaluate) ────────────────
+
+const SCROLL_REVEAL_SCRIPT = `(async function() {
+  var delay = function(ms) { return new Promise(function(r) { setTimeout(r, ms); }); };
+  var scrollHeight = document.body.scrollHeight;
+  var viewportHeight = window.innerHeight;
+  var step = Math.floor(viewportHeight * 0.7);
+
+  for (var y = 0; y < scrollHeight; y += step) {
+    window.scrollTo({ top: y, behavior: 'instant' });
+    await delay(300);
+  }
+  window.scrollTo({ top: scrollHeight, behavior: 'instant' });
+  await delay(500);
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  await delay(300);
+})()`;
+
+const FORCE_VISIBLE_CSS = [
+  '*, *::before, *::after {',
+  '  animation-delay: 0s !important;',
+  '  animation-duration: 0s !important;',
+  '  animation-play-state: paused !important;',
+  '  transition-delay: 0s !important;',
+  '  transition-duration: 0s !important;',
+  '}',
+  '[class*="reveal"], [class*="fade"], [class*="slide"],',
+  '[class*="animate"], [class*="hidden"], [class*="invisible"],',
+  '[data-aos], [data-scroll], [data-animate] {',
+  '  opacity: 1 !important;',
+  '  visibility: visible !important;',
+  '  transform: none !important;',
+  '}',
+].join('\n');
+
+const FORCE_VISIBLE_SCRIPT = `(function() {
+  var els = document.querySelectorAll('*');
+  for (var i = 0; i < els.length; i++) {
+    var style = window.getComputedStyle(els[i]);
+    if (parseFloat(style.opacity) < 0.1) {
+      els[i].style.opacity = '1';
+    }
+    if (style.visibility === 'hidden') {
+      els[i].style.visibility = 'visible';
+    }
+  }
+})()`;
 
 const EXTRACT_SCRIPT = `(function() {
   var result = {};
@@ -139,8 +185,20 @@ export async function extractPage(url: string): Promise<{ result: ExtractionResu
     const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
     await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
 
-    // Wait a bit for any lazy-loaded content
-    await page.waitForTimeout(2000);
+    // Wait for initial load
+    await page.waitForTimeout(1000);
+
+    // Scroll through the entire page to trigger scroll-reveal animations
+    // (IntersectionObserver, scroll-triggered CSS, lazy images, etc.)
+    await page.evaluate(SCROLL_REVEAL_SCRIPT);
+
+    // Inject CSS to force all elements visible and disable animations
+    await page.addStyleTag({ content: FORCE_VISIBLE_CSS });
+
+    // Force visibility via JS for frameworks that use inline styles
+    await page.evaluate(FORCE_VISIBLE_SCRIPT);
+
+    await page.waitForTimeout(500);
 
     // Extract DOM data
     const raw: any = await page.evaluate(EXTRACT_SCRIPT);
