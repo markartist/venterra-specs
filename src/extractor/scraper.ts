@@ -47,12 +47,26 @@ export interface AuditFinding {
   details?: string;
 }
 
+export interface RawAnchor {
+  href: string;
+  text: string;
+  'data-component-name': string | null;
+  'data-action': string | null;
+  parentSection: string | null;
+  parentBlock: string | null;
+  classes: string;
+  id: string | null;
+  isVisible: boolean;
+  index: number;
+}
+
 export interface ExtractionResult {
   url: string;
   timestamp: string;
   siteAttrs: SiteAttrs;
   pageAttrs: PageAttrs;
   spec: ParsedSpec;
+  anchors: RawAnchor[];
   findings: AuditFinding[];
 }
 
@@ -110,6 +124,37 @@ const FORCE_VISIBLE_SCRIPT = `(function() {
       els[i].style.visibility = 'visible';
     }
   }
+})()`;
+
+const EXTRACT_ANCHORS_SCRIPT = `(function() {
+  var anchors = document.querySelectorAll('a');
+  var results = [];
+  for (var i = 0; i < anchors.length; i++) {
+    var el = anchors[i];
+    var rect = el.getBoundingClientRect();
+    var style = window.getComputedStyle(el);
+    var isVisible = rect.width > 0 && rect.height > 0
+      && style.display !== 'none'
+      && style.visibility !== 'hidden'
+      && parseFloat(style.opacity) > 0.01;
+
+    var closestSection = el.closest('[data-page-section]');
+    var closestBlock = el.closest('[data-sub-section]');
+
+    results.push({
+      href: el.getAttribute('href') || '',
+      text: (el.textContent || '').trim().substring(0, 200),
+      'data-component-name': el.getAttribute('data-component-name'),
+      'data-action': el.getAttribute('data-action'),
+      parentSection: closestSection ? closestSection.getAttribute('data-page-section') : null,
+      parentBlock: closestBlock ? closestBlock.getAttribute('data-sub-section') : null,
+      classes: el.className || '',
+      id: el.id || null,
+      isVisible: isVisible,
+      index: i
+    });
+  }
+  return results;
 })()`;
 
 const EXTRACT_SCRIPT = `(function() {
@@ -203,6 +248,9 @@ export async function extractPage(url: string): Promise<{ result: ExtractionResu
     // Extract DOM data
     const raw: any = await page.evaluate(EXTRACT_SCRIPT);
 
+    // Extract all <a> tags
+    const anchors: RawAnchor[] = await page.evaluate(EXTRACT_ANCHORS_SCRIPT);
+
     // Full-page screenshot
     const screenshot = await page.screenshot({ fullPage: true, type: 'png' });
 
@@ -210,8 +258,10 @@ export async function extractPage(url: string): Promise<{ result: ExtractionResu
     browser = null;
 
     // Process raw data into structured spec
+    const result = processRawData(url, raw);
+    result.anchors = anchors;
     return {
-      result: processRawData(url, raw),
+      result,
       screenshot: screenshot as Buffer,
     };
   } finally {
@@ -379,6 +429,7 @@ function processRawData(url: string, raw: any): ExtractionResult {
     siteAttrs,
     pageAttrs,
     spec,
+    anchors: [], // populated after processRawData by caller
     findings,
   };
 }
