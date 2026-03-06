@@ -91,6 +91,7 @@ const EXTRACT_ANCHORS_SCRIPT = `(function() {
       parentSection: closestSection ? closestSection.getAttribute('data-page-section') : null,
       parentBlock: closestBlock ? closestBlock.getAttribute('data-sub-section') : null,
       structuralRegion: structuralRegion,
+      governance: el.getAttribute('data-governance'),
       classes: el.className || '',
       id: el.id || null,
       isVisible: isVisible,
@@ -124,6 +125,7 @@ interface RawAnchor {
   parentSection: string | null;
   parentBlock: string | null;
   structuralRegion: string | null;
+  governance: string | null;
   classes: string;
   id: string | null;
   isVisible: boolean;
@@ -135,9 +137,32 @@ interface AnchorViolation {
   message: string;
 }
 
+const THIRD_PARTY_DOMAINS = [
+  'maps.google.com', 'www.google.com/maps', 'google.com/intl',
+  'maps.googleapis.com',
+];
+const UI_CONTROL_CLASS_PATTERNS = [
+  'uk-slidenav', 'uk-navbar-toggle', 'uk-totop', 'uk-icon',
+  'slick-arrow', 'swiper-button', 'carousel-control',
+];
+
+function isExemptAnchor(anchor: RawAnchor): string | null {
+  if (anchor.governance === 'exempt') return 'explicit-exempt';
+  const href = (anchor.href || '').trim();
+  const text = (anchor.text || '').trim();
+  const classes = anchor.classes || '';
+  if (href.startsWith('#tm-main') || href.startsWith('#main') || /skip.*(content|nav)/i.test(text)) return 'skip-link';
+  if (!href && !text && !anchor['data-component-name']) return 'empty-placeholder';
+  if ((href === '#' || href === '') && !text && !anchor['data-component-name']) return 'ui-control';
+  if (UI_CONTROL_CLASS_PATTERNS.some(p => classes.includes(p)) && !anchor['data-component-name']) return 'ui-control';
+  if (THIRD_PARTY_DOMAINS.some(d => href.includes(d))) return 'third-party-embed';
+  if (/^#tm-dialog/.test(href) && !anchor['data-component-name']) return 'ui-control';
+  return null;
+}
+
 interface AuditedAnchor {
   anchor: RawAnchor;
-  status: 'governed' | 'non-compliant' | 'untagged';
+  status: 'governed' | 'non-compliant' | 'untagged' | 'exempt';
   violations: AnchorViolation[];
 }
 
@@ -145,6 +170,11 @@ function auditAnchor(anchor: RawAnchor): AuditedAnchor {
   const violations: AnchorViolation[] = [];
   const componentName = trimAttrValue(anchor['data-component-name']);
   const action = trimAttrValue(anchor['data-action']);
+
+  const exemptReason = isExemptAnchor(anchor);
+  if (exemptReason) {
+    return { anchor, status: 'exempt', violations: [{ rule: 'exempt', message: exemptReason }] };
+  }
 
   if (!componentName && !action) {
     return { anchor, status: 'untagged', violations: [] };
@@ -182,8 +212,10 @@ function auditAnchors(anchors: RawAnchor[], url: string) {
   const governed = visible.filter(a => a.status === 'governed').length;
   const nonCompliant = visible.filter(a => a.status === 'non-compliant').length;
   const untagged = visible.filter(a => a.status === 'untagged').length;
-  const complianceRate = visible.length > 0
-    ? Math.round((governed / visible.length) * 10000) / 100
+  const exempt = visible.filter(a => a.status === 'exempt').length;
+  const auditEligible = visible.length - exempt;
+  const complianceRate = auditEligible > 0
+    ? Math.round((governed / auditEligible) * 10000) / 100
     : 0;
 
   return {
@@ -191,7 +223,7 @@ function auditAnchors(anchors: RawAnchor[], url: string) {
     timestamp: new Date().toISOString(),
     totalAnchors: anchors.length,
     visibleAnchors: visible.length,
-    summary: { governed, nonCompliant, untagged, invisible: invisible.length },
+    summary: { governed, nonCompliant, untagged, exempt, invisible: invisible.length },
     complianceRate,
     anchors: audited,
   };

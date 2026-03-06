@@ -26,7 +26,7 @@ const VALID_ACTION_PREFIXES = [
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
-export type AnchorStatus = 'governed' | 'non-compliant' | 'untagged';
+export type AnchorStatus = 'governed' | 'non-compliant' | 'untagged' | 'exempt';
 
 export interface AnchorViolation {
   rule: string;
@@ -55,9 +55,10 @@ export interface AnchorAuditResult {
     governed: number;
     nonCompliant: number;
     untagged: number;
+    exempt: number;
     invisible: number;
   };
-  /** Compliance percentage (governed / visible) */
+  /** Compliance percentage: governed / (visible - exempt) */
   complianceRate: number;
   /** All audited anchors */
   anchors: AuditedAnchor[];
@@ -78,12 +79,71 @@ function trimAttrValue(val: string | null): string | null {
   return val.replace(/^[\s"']+|[\s"']+$/g, '').trim() || null;
 }
 
+// ── Exempt detection ───────────────────────────────────────────────────────
+
+/** Third-party domains whose anchors are outside our governance scope */
+const THIRD_PARTY_DOMAINS = [
+  'maps.google.com', 'www.google.com/maps', 'google.com/intl',
+  'maps.googleapis.com',
+];
+
+/** CSS class patterns that indicate UI/framework controls */
+const UI_CONTROL_CLASS_PATTERNS = [
+  'uk-slidenav', 'uk-navbar-toggle', 'uk-totop', 'uk-icon',
+  'slick-arrow', 'swiper-button', 'carousel-control',
+];
+
+/**
+ * Detect anchors that are decorative, UI controls, or third-party embeds
+ * and should be excluded from the compliance denominator.
+ */
+function isExemptAnchor(anchor: RawAnchor): string | null {
+  // Explicit opt-out via data-governance="exempt"
+  if (anchor.governance === 'exempt') return 'explicit-exempt';
+
+  const href = (anchor.href || '').trim();
+  const text = (anchor.text || '').trim();
+  const classes = anchor.classes || '';
+
+  // Skip-to-content links
+  if (href.startsWith('#tm-main') || href.startsWith('#main') || /skip.*(content|nav)/i.test(text)) {
+    return 'skip-link';
+  }
+
+  // Empty placeholder anchors (no href, no text, no governance attrs)
+  if (!href && !text && !anchor['data-component-name']) return 'empty-placeholder';
+
+  // Anchors with href="#" or empty href and no text — UI controls (carousel arrows, etc.)
+  if ((href === '#' || href === '') && !text && !anchor['data-component-name']) {
+    return 'ui-control';
+  }
+
+  // Framework UI control classes
+  if (UI_CONTROL_CLASS_PATTERNS.some(p => classes.includes(p)) && !anchor['data-component-name']) {
+    return 'ui-control';
+  }
+
+  // Third-party embed links (Google Maps, etc.)
+  if (THIRD_PARTY_DOMAINS.some(d => href.includes(d))) return 'third-party-embed';
+
+  // Hamburger/mobile menu toggle (common: href to dialog/offcanvas)
+  if (/^#tm-dialog/.test(href) && !anchor['data-component-name']) return 'ui-control';
+
+  return null;
+}
+
 // ── Audit logic ────────────────────────────────────────────────────────────
 
 function auditAnchor(anchor: RawAnchor): AuditedAnchor {
   const violations: AnchorViolation[] = [];
   const componentName = trimAttrValue(anchor['data-component-name']);
   const action = trimAttrValue(anchor['data-action']);
+
+  // Check if anchor is exempt (decorative/UI/third-party)
+  const exemptReason = isExemptAnchor(anchor);
+  if (exemptReason) {
+    return { anchor, status: 'exempt', violations: [{ rule: 'exempt', message: exemptReason }] };
+  }
 
   // If no governance attributes at all → untagged
   if (!componentName && !action) {
@@ -157,9 +217,11 @@ export function auditAnchors(
   const governed = visible.filter(a => a.status === 'governed').length;
   const nonCompliant = visible.filter(a => a.status === 'non-compliant').length;
   const untagged = visible.filter(a => a.status === 'untagged').length;
+  const exempt = visible.filter(a => a.status === 'exempt').length;
 
-  const complianceRate = visible.length > 0
-    ? Math.round((governed / visible.length) * 10000) / 100
+  const auditEligible = visible.length - exempt;
+  const complianceRate = auditEligible > 0
+    ? Math.round((governed / auditEligible) * 10000) / 100
     : 0;
 
   return {
@@ -172,6 +234,7 @@ export function auditAnchors(
       governed,
       nonCompliant,
       untagged,
+      exempt,
       invisible: invisible.length,
     },
     complianceRate,
@@ -192,7 +255,8 @@ export function formatAnchorAuditReport(result: AnchorAuditResult): string {
   lines.push('## Summary');
   lines.push(`Total <a> tags: ${result.totalAnchors}`);
   lines.push(`Visible: ${result.visibleAnchors} | Invisible: ${summary.invisible}`);
-  lines.push(`Governed: ${summary.governed} | Non-Compliant: ${summary.nonCompliant} | Untagged: ${summary.untagged}`);
+  lines.push(`Governed: ${summary.governed} | Non-Compliant: ${summary.nonCompliant} | Untagged: ${summary.untagged} | Exempt: ${summary.exempt}`);
+  lines.push(`Audit-eligible: ${result.visibleAnchors - summary.exempt} (visible minus exempt)`);
   lines.push(`**Compliance Rate: ${result.complianceRate}%**`);
   lines.push('');
 
@@ -256,6 +320,21 @@ export function formatAnchorAuditReport(result: AnchorAuditResult): string {
       const a = item.anchor;
       const region = a.parentSection || (a.structuralRegion ? `site:${a.structuralRegion}` : 'orphaned');
       lines.push(`- ✓ **${a['data-component-name']}** → ${a['data-action'] || '(no action)'} [${region}]`);
+    }
+    lines.push('');
+  }
+
+  // Exempt anchors
+  const exemptAnchors = result.anchors.filter(a => a.status === 'exempt' && a.anchor.isVisible);
+  if (exemptAnchors.length > 0) {
+    lines.push('## Exempt Anchors');
+    lines.push(`${exemptAnchors.length} anchor(s) excluded from compliance (UI controls, skip links, third-party embeds).`);
+    lines.push('');
+    for (const item of exemptAnchors) {
+      const a = item.anchor;
+      const label = a.text || a.href || '(empty)';
+      const reason = item.violations[0]?.message || 'exempt';
+      lines.push(`- \`${reason}\` — "${truncate(label, 50)}" → ${a.href || '(no href)'}`);
     }
     lines.push('');
   }

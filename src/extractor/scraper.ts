@@ -56,6 +56,8 @@ export interface RawAnchor {
   parentBlock: string | null;
   /** Nearest HTML5 structural ancestor: header, nav, footer, aside, main */
   structuralRegion: string | null;
+  /** Explicit governance opt-out: data-governance="exempt" */
+  governance: string | null;
   classes: string;
   id: string | null;
   isVisible: boolean;
@@ -164,6 +166,7 @@ const EXTRACT_ANCHORS_SCRIPT = `(function() {
       parentSection: closestSection ? closestSection.getAttribute('data-page-section') : null,
       parentBlock: closestBlock ? closestBlock.getAttribute('data-sub-section') : null,
       structuralRegion: structuralRegion,
+      governance: el.getAttribute('data-governance'),
       classes: el.className || '',
       id: el.id || null,
       isVisible: isVisible,

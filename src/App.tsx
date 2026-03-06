@@ -68,7 +68,7 @@ function App() {
   const [auditLoading, setAuditLoading] = useState(false)
   const [auditResult, setAuditResult] = useState<any>(null)
   const [auditError, setAuditError] = useState<string | null>(null)
-  const [auditExpanded, setAuditExpanded] = useState<Record<string, boolean>>({ governed: false, nonCompliant: true, untagged: true })
+  const [auditExpanded, setAuditExpanded] = useState<Record<string, boolean>>({ governed: false, nonCompliant: true, untagged: true, exempt: false })
 
   // Load compiled JSON + position overrides when page changes
   useEffect(() => {
@@ -706,6 +706,7 @@ function App() {
               <span className="bg-green-900/40 text-green-300 px-3 py-1 rounded">✓ {auditResult.summary.governed} Governed</span>
               <span className="bg-yellow-900/40 text-yellow-300 px-3 py-1 rounded">⚠ {auditResult.summary.nonCompliant} Non-Compliant</span>
               <span className="bg-red-900/40 text-red-300 px-3 py-1 rounded">✗ {auditResult.summary.untagged} Untagged</span>
+              <span className="bg-slate-600/40 text-slate-300 px-3 py-1 rounded">⊘ {auditResult.summary.exempt} Exempt</span>
               <span className="bg-slate-700 text-slate-400 px-3 py-1 rounded">👁 {auditResult.summary.invisible} Invisible</span>
             </div>
 
@@ -791,6 +792,32 @@ function App() {
                             <span className="text-slate-500 truncate ml-auto">{item.anchor.href || '(no href)'}</span>
                           </div>
                           <div className="text-slate-500 mt-1">Section: {item.anchor.parentSection || (item.anchor.structuralRegion ? `site:${item.anchor.structuralRegion}` : '(orphaned)')}</div>
+                        </div>
+                      ))}
+                  </div>
+                )}
+              </div>
+            )}
+            {/* Exempt Anchors */}
+            {auditResult.summary.exempt > 0 && (
+              <div className="mb-4">
+                <button
+                  onClick={() => setAuditExpanded(prev => ({ ...prev, exempt: !prev.exempt }))}
+                  className="text-slate-400 font-semibold text-xs mb-2 cursor-pointer hover:text-slate-300"
+                >
+                  {auditExpanded.exempt ? '▼' : '▶'} Exempt Anchors ({auditResult.summary.exempt})
+                </button>
+                {auditExpanded.exempt && (
+                  <div className="space-y-1">
+                    {auditResult.anchors
+                      .filter((a: any) => a.status === 'exempt' && a.anchor.isVisible)
+                      .map((item: any, i: number) => (
+                        <div key={i} className="bg-slate-700/30 border border-slate-600/30 rounded p-2 text-xs">
+                          <div className="flex items-start gap-2">
+                            <span className="text-slate-400 font-mono shrink-0">{item.violations[0]?.message || 'exempt'}</span>
+                            <span className="text-slate-500">—</span>
+                            <span className="text-slate-400 truncate">"{(item.anchor.text || item.anchor.href || '(empty)').substring(0, 50)}"</span>
+                          </div>
                         </div>
                       ))}
                   </div>
