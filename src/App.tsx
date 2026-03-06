@@ -730,7 +730,7 @@ function App() {
                             <span className="text-slate-300 font-mono">{item.anchor['data-action'] || '(no action)'}</span>
                             <span className="text-slate-500 truncate ml-auto">{item.anchor.href || '(no href)'}</span>
                           </div>
-                          <div className="text-slate-500 mt-1">Section: {item.anchor.parentSection || '(orphaned)'}</div>
+                          <div className="text-slate-500 mt-1">Section: {item.anchor.parentSection || (item.anchor.structuralRegion ? `site:${item.anchor.structuralRegion}` : '(orphaned)')}</div>
                           {item.violations.map((v: any, j: number) => (
                             <div key={j} className="text-yellow-400 mt-1">⚠ [{v.rule}] {v.message}</div>
                           ))}
@@ -761,7 +761,7 @@ function App() {
                             <span className="text-slate-400">→</span>
                             <span className="text-slate-500 truncate">{item.anchor.href || '(no href)'}</span>
                           </div>
-                          <div className="text-slate-500 mt-1">Section: {item.anchor.parentSection || '(no section)'}</div>
+                          <div className="text-slate-500 mt-1">Section: {item.anchor.parentSection || (item.anchor.structuralRegion ? `site:${item.anchor.structuralRegion}` : '(no section)')}</div>
                         </div>
                       ))}
                   </div>
@@ -790,7 +790,7 @@ function App() {
                             <span className="text-slate-300 font-mono">{item.anchor['data-action'] || '(no action)'}</span>
                             <span className="text-slate-500 truncate ml-auto">{item.anchor.href || '(no href)'}</span>
                           </div>
-                          <div className="text-slate-500 mt-1">Section: {item.anchor.parentSection}</div>
+                          <div className="text-slate-500 mt-1">Section: {item.anchor.parentSection || (item.anchor.structuralRegion ? `site:${item.anchor.structuralRegion}` : '(orphaned)')}</div>
                         </div>
                       ))}
                   </div>

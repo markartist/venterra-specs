@@ -72,6 +72,17 @@ const EXTRACT_ANCHORS_SCRIPT = `(function() {
       && parseFloat(style.opacity) > 0.01;
     var closestSection = el.closest('[data-page-section]');
     var closestBlock = el.closest('[data-sub-section]');
+    var structuralRegion = null;
+    var structEl = el.closest('header, nav, footer, aside, main, [role="banner"], [role="navigation"], [role="contentinfo"], [role="complementary"]');
+    if (structEl) {
+      var tag = structEl.tagName.toLowerCase();
+      if (tag === 'div' || tag === 'section') {
+        var role = structEl.getAttribute('role');
+        structuralRegion = role || null;
+      } else {
+        structuralRegion = tag;
+      }
+    }
     results.push({
       href: el.getAttribute('href') || '',
       text: (el.textContent || '').trim().substring(0, 200),
@@ -79,6 +90,7 @@ const EXTRACT_ANCHORS_SCRIPT = `(function() {
       'data-action': el.getAttribute('data-action'),
       parentSection: closestSection ? closestSection.getAttribute('data-page-section') : null,
       parentBlock: closestBlock ? closestBlock.getAttribute('data-sub-section') : null,
+      structuralRegion: structuralRegion,
       classes: el.className || '',
       id: el.id || null,
       isVisible: isVisible,
@@ -94,6 +106,15 @@ const SNAKE_CASE_RE = /^[a-z][a-z0-9_]*$/;
 const VALID_ACTION_PREFIXES = [
   'navigate_', 'open_', 'show_', 'submit_', 'apply_', 'initiate_',
 ];
+const VALID_STRUCTURAL_REGIONS = new Set([
+  'header', 'nav', 'footer', 'aside', 'main',
+  'banner', 'navigation', 'contentinfo', 'complementary',
+]);
+
+function trimAttrValue(val: string | null): string | null {
+  if (!val) return null;
+  return val.replace(/^[\s"']+|[\s"']+$/g, '').trim() || null;
+}
 
 interface RawAnchor {
   href: string;
@@ -102,6 +123,7 @@ interface RawAnchor {
   'data-action': string | null;
   parentSection: string | null;
   parentBlock: string | null;
+  structuralRegion: string | null;
   classes: string;
   id: string | null;
   isVisible: boolean;
@@ -121,8 +143,8 @@ interface AuditedAnchor {
 
 function auditAnchor(anchor: RawAnchor): AuditedAnchor {
   const violations: AnchorViolation[] = [];
-  const componentName = anchor['data-component-name'];
-  const action = anchor['data-action'];
+  const componentName = trimAttrValue(anchor['data-component-name']);
+  const action = trimAttrValue(anchor['data-action']);
 
   if (!componentName && !action) {
     return { anchor, status: 'untagged', violations: [] };
@@ -143,7 +165,10 @@ function auditAnchor(anchor: RawAnchor): AuditedAnchor {
     }
   }
   if (!anchor.parentSection) {
-    violations.push({ rule: 'orphaned-anchor', message: 'Not inside any [data-page-section] container' });
+    const region = anchor.structuralRegion;
+    if (!region || !VALID_STRUCTURAL_REGIONS.has(region)) {
+      violations.push({ rule: 'orphaned-anchor', message: 'Not inside any [data-page-section] or structural region (header/nav/footer)' });
+    }
   }
 
   return { anchor, status: violations.length === 0 ? 'governed' : 'non-compliant', violations };

@@ -54,6 +54,8 @@ export interface RawAnchor {
   'data-action': string | null;
   parentSection: string | null;
   parentBlock: string | null;
+  /** Nearest HTML5 structural ancestor: header, nav, footer, aside, main */
+  structuralRegion: string | null;
   classes: string;
   id: string | null;
   isVisible: boolean;
@@ -141,6 +143,19 @@ const EXTRACT_ANCHORS_SCRIPT = `(function() {
     var closestSection = el.closest('[data-page-section]');
     var closestBlock = el.closest('[data-sub-section]');
 
+    // Detect structural HTML5 region (header, nav, footer, aside, main)
+    var structuralRegion = null;
+    var structEl = el.closest('header, nav, footer, aside, main, [role="banner"], [role="navigation"], [role="contentinfo"], [role="complementary"]');
+    if (structEl) {
+      var tag = structEl.tagName.toLowerCase();
+      if (tag === 'div' || tag === 'section') {
+        var role = structEl.getAttribute('role');
+        structuralRegion = role || null;
+      } else {
+        structuralRegion = tag;
+      }
+    }
+
     results.push({
       href: el.getAttribute('href') || '',
       text: (el.textContent || '').trim().substring(0, 200),
@@ -148,6 +163,7 @@ const EXTRACT_ANCHORS_SCRIPT = `(function() {
       'data-action': el.getAttribute('data-action'),
       parentSection: closestSection ? closestSection.getAttribute('data-page-section') : null,
       parentBlock: closestBlock ? closestBlock.getAttribute('data-sub-section') : null,
+      structuralRegion: structuralRegion,
       classes: el.className || '',
       id: el.id || null,
       isVisible: isVisible,

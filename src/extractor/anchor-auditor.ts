@@ -63,12 +63,27 @@ export interface AnchorAuditResult {
   anchors: AuditedAnchor[];
 }
 
+/** Known structural regions that serve as valid section contexts */
+const VALID_STRUCTURAL_REGIONS = new Set([
+  'header', 'nav', 'footer', 'aside', 'main',
+  'banner', 'navigation', 'contentinfo', 'complementary',
+]);
+
+/**
+ * Auto-trim attribute values that may contain embedded quotes/spaces
+ * from CMS copy-paste (e.g. ' "cta_schedule_tour"' → 'cta_schedule_tour')
+ */
+function trimAttrValue(val: string | null): string | null {
+  if (!val) return null;
+  return val.replace(/^[\s"']+|[\s"']+$/g, '').trim() || null;
+}
+
 // ── Audit logic ────────────────────────────────────────────────────────────
 
 function auditAnchor(anchor: RawAnchor): AuditedAnchor {
   const violations: AnchorViolation[] = [];
-  const componentName = anchor['data-component-name'];
-  const action = anchor['data-action'];
+  const componentName = trimAttrValue(anchor['data-component-name']);
+  const action = trimAttrValue(anchor['data-action']);
 
   // If no governance attributes at all → untagged
   if (!componentName && !action) {
@@ -111,12 +126,18 @@ function auditAnchor(anchor: RawAnchor): AuditedAnchor {
     }
   }
 
-  // Rule 4: Should be inside a data-page-section container
+  // Rule 4: Should be inside a data-page-section OR a known structural region
   if (!anchor.parentSection) {
-    violations.push({
-      rule: 'orphaned-anchor',
-      message: 'Tagged anchor is not inside any [data-page-section] container',
-    });
+    const region = anchor.structuralRegion;
+    if (region && VALID_STRUCTURAL_REGIONS.has(region)) {
+      // Anchor is in a known structural region (header, nav, footer, etc.)
+      // This is acceptable — not orphaned
+    } else {
+      violations.push({
+        rule: 'orphaned-anchor',
+        message: 'Tagged anchor is not inside any [data-page-section] or structural region (header/nav/footer)',
+      });
+    }
   }
 
   const status: AnchorStatus = violations.length === 0 ? 'governed' : 'non-compliant';
@@ -186,7 +207,8 @@ export function formatAnchorAuditReport(result: AnchorAuditResult): string {
       const label = a.text || a.href || '(empty)';
       lines.push(`### ${a['data-component-name'] || '(no name)'} — "${truncate(label, 60)}"`);
       lines.push(`- href: ${a.href || '(none)'}`);
-      lines.push(`- section: ${a.parentSection || '(orphaned)'}`);
+      const section = a.parentSection || (a.structuralRegion ? `site:${a.structuralRegion}` : '(orphaned)');
+      lines.push(`- section: ${section}`);
       if (a['data-component-name']) lines.push(`- component: ${a['data-component-name']}`);
       if (a['data-action']) lines.push(`- action: ${a['data-action']}`);
       lines.push(`- Violations:`);
@@ -232,7 +254,8 @@ export function formatAnchorAuditReport(result: AnchorAuditResult): string {
     lines.push('');
     for (const item of governed) {
       const a = item.anchor;
-      lines.push(`- ✓ **${a['data-component-name']}** → ${a['data-action'] || '(no action)'} [${a.parentSection || 'orphaned'}]`);
+      const region = a.parentSection || (a.structuralRegion ? `site:${a.structuralRegion}` : 'orphaned');
+      lines.push(`- ✓ **${a['data-component-name']}** → ${a['data-action'] || '(no action)'} [${region}]`);
     }
     lines.push('');
   }
