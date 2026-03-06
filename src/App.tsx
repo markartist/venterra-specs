@@ -63,6 +63,13 @@ function App() {
   const [draggingSection, setDraggingSection] = useState<{ idx: number; startY: number; startTop: number } | null>(null)
   const canvasRef = React.useRef<HTMLDivElement>(null)
 
+  // Audit state
+  const [auditUrl, setAuditUrl] = useState('')
+  const [auditLoading, setAuditLoading] = useState(false)
+  const [auditResult, setAuditResult] = useState<any>(null)
+  const [auditError, setAuditError] = useState<string | null>(null)
+  const [auditExpanded, setAuditExpanded] = useState<Record<string, boolean>>({ governed: false, nonCompliant: true, untagged: true })
+
   // Load compiled JSON + position overrides when page changes
   useEffect(() => {
     async function loadSpec() {
@@ -479,6 +486,56 @@ function App() {
             </button>
           )}
         </div>
+
+        {/* Anchor Audit */}
+        <div className="border-t border-slate-700 pt-10 mt-10">
+          <h3 className="text-sm font-semibold text-white mb-5">Anchor Tag Audit</h3>
+          <input
+            type="text"
+            value={auditUrl}
+            onChange={(e) => setAuditUrl(e.target.value)}
+            placeholder="https://example.com/page/"
+            className="w-full text-white p-2 rounded text-sm border mb-3"
+            style={{backgroundColor: '#334155', borderColor: '#475569'}}
+          />
+          <button
+            onClick={async () => {
+              if (!auditUrl) return
+              setAuditLoading(true)
+              setAuditError(null)
+              setAuditResult(null)
+              try {
+                const res = await fetch('/api/audit', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ url: auditUrl }),
+                })
+                const data = await res.json()
+                if (data.error) throw new Error(data.error)
+                setAuditResult(data)
+              } catch (err) {
+                setAuditError(err instanceof Error ? err.message : 'Audit failed')
+              } finally {
+                setAuditLoading(false)
+              }
+            }}
+            disabled={auditLoading || !auditUrl}
+            className="w-full bg-orange-600 hover:bg-orange-700 disabled:bg-slate-600 disabled:cursor-not-allowed text-white py-2 rounded font-semibold text-sm"
+          >
+            {auditLoading ? 'Auditing...' : '🔍 Run Audit'}
+          </button>
+          {auditResult && (
+            <div className="mt-3 p-3 rounded text-xs" style={{backgroundColor: '#15284B30'}}>
+              <div className="text-green-400 font-semibold">{auditResult.summary.governed} governed</div>
+              <div className="text-yellow-400 font-semibold">{auditResult.summary.nonCompliant} non-compliant</div>
+              <div className="text-red-400 font-semibold">{auditResult.summary.untagged} untagged</div>
+              <div className="text-blue-300 font-bold mt-1">{auditResult.complianceRate}% compliance</div>
+            </div>
+          )}
+          {auditError && (
+            <div className="mt-3 text-xs text-red-400">✗ {auditError}</div>
+          )}
+        </div>
       </div>
 
       {/* Main Canvas */}
@@ -631,6 +688,118 @@ function App() {
           </div>
         )}
       </div>
+
+      {/* Audit Results Panel */}
+      {auditResult && (
+        <div className="fixed bottom-0 left-80 right-0 bg-slate-800 border-t border-slate-600 overflow-auto" style={{ maxHeight: '50vh' }}>
+          <div className="p-4">
+            <div className="flex items-center justify-between mb-3">
+              <h2 className="text-white font-bold text-sm">Anchor Audit Results — {auditResult.complianceRate}% Compliance</h2>
+              <div className="flex items-center gap-3">
+                <span className="text-xs text-slate-400">{auditResult.visibleAnchors} visible / {auditResult.totalAnchors} total</span>
+                <button onClick={() => setAuditResult(null)} className="text-slate-400 hover:text-white text-xs cursor-pointer">✕ Close</button>
+              </div>
+            </div>
+
+            {/* Summary bar */}
+            <div className="flex gap-4 mb-4 text-xs">
+              <span className="bg-green-900/40 text-green-300 px-3 py-1 rounded">✓ {auditResult.summary.governed} Governed</span>
+              <span className="bg-yellow-900/40 text-yellow-300 px-3 py-1 rounded">⚠ {auditResult.summary.nonCompliant} Non-Compliant</span>
+              <span className="bg-red-900/40 text-red-300 px-3 py-1 rounded">✗ {auditResult.summary.untagged} Untagged</span>
+              <span className="bg-slate-700 text-slate-400 px-3 py-1 rounded">👁 {auditResult.summary.invisible} Invisible</span>
+            </div>
+
+            {/* Non-Compliant Anchors */}
+            {auditResult.summary.nonCompliant > 0 && (
+              <div className="mb-4">
+                <button
+                  onClick={() => setAuditExpanded(prev => ({ ...prev, nonCompliant: !prev.nonCompliant }))}
+                  className="text-yellow-300 font-semibold text-xs mb-2 cursor-pointer hover:text-yellow-200"
+                >
+                  {auditExpanded.nonCompliant ? '▼' : '▶'} Non-Compliant Anchors ({auditResult.summary.nonCompliant})
+                </button>
+                {auditExpanded.nonCompliant && (
+                  <div className="space-y-1">
+                    {auditResult.anchors
+                      .filter((a: any) => a.status === 'non-compliant' && a.anchor.isVisible)
+                      .map((item: any, i: number) => (
+                        <div key={i} className="bg-yellow-900/20 border border-yellow-800/30 rounded p-2 text-xs">
+                          <div className="flex items-start gap-2">
+                            <span className="text-yellow-300 font-mono font-bold shrink-0">{item.anchor['data-component-name'] || '(none)'}</span>
+                            <span className="text-slate-400">→</span>
+                            <span className="text-slate-300 font-mono">{item.anchor['data-action'] || '(no action)'}</span>
+                            <span className="text-slate-500 truncate ml-auto">{item.anchor.href || '(no href)'}</span>
+                          </div>
+                          <div className="text-slate-500 mt-1">Section: {item.anchor.parentSection || '(orphaned)'}</div>
+                          {item.violations.map((v: any, j: number) => (
+                            <div key={j} className="text-yellow-400 mt-1">⚠ [{v.rule}] {v.message}</div>
+                          ))}
+                        </div>
+                      ))}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Untagged Anchors */}
+            {auditResult.summary.untagged > 0 && (
+              <div className="mb-4">
+                <button
+                  onClick={() => setAuditExpanded(prev => ({ ...prev, untagged: !prev.untagged }))}
+                  className="text-red-300 font-semibold text-xs mb-2 cursor-pointer hover:text-red-200"
+                >
+                  {auditExpanded.untagged ? '▼' : '▶'} Untagged Anchors ({auditResult.summary.untagged})
+                </button>
+                {auditExpanded.untagged && (
+                  <div className="space-y-1">
+                    {auditResult.anchors
+                      .filter((a: any) => a.status === 'untagged' && a.anchor.isVisible)
+                      .map((item: any, i: number) => (
+                        <div key={i} className="bg-red-900/20 border border-red-800/30 rounded p-2 text-xs">
+                          <div className="flex items-start gap-2">
+                            <span className="text-red-300 font-semibold shrink-0">"{(item.anchor.text || '(no text)').substring(0, 50)}"</span>
+                            <span className="text-slate-400">→</span>
+                            <span className="text-slate-500 truncate">{item.anchor.href || '(no href)'}</span>
+                          </div>
+                          <div className="text-slate-500 mt-1">Section: {item.anchor.parentSection || '(no section)'}</div>
+                        </div>
+                      ))}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Governed Anchors */}
+            {auditResult.summary.governed > 0 && (
+              <div className="mb-4">
+                <button
+                  onClick={() => setAuditExpanded(prev => ({ ...prev, governed: !prev.governed }))}
+                  className="text-green-300 font-semibold text-xs mb-2 cursor-pointer hover:text-green-200"
+                >
+                  {auditExpanded.governed ? '▼' : '▶'} Governed Anchors ({auditResult.summary.governed})
+                </button>
+                {auditExpanded.governed && (
+                  <div className="space-y-1">
+                    {auditResult.anchors
+                      .filter((a: any) => a.status === 'governed' && a.anchor.isVisible)
+                      .map((item: any, i: number) => (
+                        <div key={i} className="bg-green-900/20 border border-green-800/30 rounded p-2 text-xs">
+                          <div className="flex items-start gap-2">
+                            <span className="text-green-300 font-mono font-bold shrink-0">{item.anchor['data-component-name']}</span>
+                            <span className="text-slate-400">→</span>
+                            <span className="text-slate-300 font-mono">{item.anchor['data-action'] || '(no action)'}</span>
+                            <span className="text-slate-500 truncate ml-auto">{item.anchor.href || '(no href)'}</span>
+                          </div>
+                          <div className="text-slate-500 mt-1">Section: {item.anchor.parentSection}</div>
+                        </div>
+                      ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   )
 }

@@ -16,6 +16,7 @@
     "fix-sections": "node --input-type=module -e \"import fs from 'fs'; let c=fs.readFileSync('./src/layouts/pages/homepage.json','utf8'); c=c.replace(/\\\"section_01\\\"/g,'\\\"1\\\"').replace(/\\\"section_02\\\"/g,'\\\"2\\\"').replace(/\\\"section_03\\\"/g,'\\\"3\\\"').replace(/\\\"section_04\\\"/g,'\\\"4\\\"').replace(/\\\"section_05\\\"/g,'\\\"5\\\"').replace(/\\\"section_06\\\"/g,'\\\"6\\\"').replace(/\\\"section_07\\\"/g,'\\\"7\\\"').replace(/\\\"section_08\\\"/g,'\\\"8\\\"').replace(/\\\"section_09\\\"/g,'\\\"9\\\"').replace(/\\\"section_10\\\"/g,'\\\"10\\\"'); fs.writeFileSync('./src/layouts/pages/homepage.json',c,'utf8'); console.log('✅ Fixed');\""
   },
   "dependencies": {
+    "@cloudflare/playwright": "^1.1.1",
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
     "@mui/icons-material": "7.3.5",

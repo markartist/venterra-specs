@@ -6,3 +6,7 @@ pages_build_output_dir = "dist"
 [[kv_namespaces]]
 binding = "POSITIONS"
 id = "4225c26d4b8146a5b7735411a970d703"
+
+# Browser Rendering binding for anchor audits
+[browser]
+binding = "BROWSER"
