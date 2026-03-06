@@ -6,7 +6,7 @@
  * AnchorAuditResult.
  */
 
-import { launch } from '@cloudflare/playwright';
+import puppeteer from '@cloudflare/puppeteer';
 
 interface Env {
   BROWSER: any; // Browser Rendering binding
@@ -195,12 +195,12 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     }
 
     // Launch browser via Cloudflare Browser Rendering
-    const browser = await launch(context.env.BROWSER);
+    const browser = await puppeteer.launch(context.env.BROWSER);
     const page = await browser.newPage();
 
-    await page.setViewportSize({ width: 1440, height: 900 });
-    await page.goto(targetUrl.href, { waitUntil: 'networkidle', timeout: 45000 });
-    await page.waitForTimeout(800);
+    await page.setViewport({ width: 1440, height: 900 });
+    await page.goto(targetUrl.href, { waitUntil: 'networkidle0', timeout: 45000 });
+    await new Promise(r => setTimeout(r, 800));
 
     // Scroll to trigger reveals
     await page.evaluate(SCROLL_REVEAL_SCRIPT);
@@ -208,7 +208,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     // Force visibility
     await page.addStyleTag({ content: FORCE_VISIBLE_CSS });
     await page.evaluate(FORCE_VISIBLE_SCRIPT);
-    await page.waitForTimeout(300);
+    await new Promise(r => setTimeout(r, 300));
 
     // Extract all <a> tags
     const anchors: RawAnchor[] = await page.evaluate(EXTRACT_ANCHORS_SCRIPT);
